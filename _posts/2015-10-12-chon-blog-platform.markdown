@@ -157,6 +157,11 @@ Nếu mọi thứ bình thường thì sẽ view được qua url
 Giờ ngồi chỉnh lại mấy cái `about.md`, `_config.yml` sửa mấy cái mặc định
 là thành một cái blog rồi.
 
+Một việc cần lưu ý là khi chạy `deploy` qua bằng octopress, sẽ tạo ra
+một thư mục deploy riêng (mặc định là .deploy) và khởi tạo một git
+repository ở đó. Vì vậy nếu muốn thao tác hoặc chỉnh sửa git config thì
+nên lưu ý cả 2 thư mục là `.git` và `.deploy/.git`.
+
 ## Kết
 
 Cái này dùng liquid template nên có thể tùy chỉnh rất nhiều thứ. Chắc là
