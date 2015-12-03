@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Webpy tạo web api Với Python</title>
+  <meta name="description" content="Sau khi tìm loanh quanh để viết một web service đơn giản với python thìthấy thằng này webpy này có vẻ ổn. Mình chỉ tìm hiểu để làm một web api nên chỉ quan t...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://smilekid1994.github.io/2015/11/13/webpy-to-website-vi-python.html">
+  <link rel="alternate" type="application/rss+xml" title="Just a small corner" href="https://smilekid1994.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Just a small corner</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Webpy tạo web api Với Python</h1>
+    <p class="post-meta">Nov 13, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>Sau khi tìm loanh quanh để viết một web service đơn giản với python thì
+thấy thằng này webpy này có vẻ ổn. Mình chỉ tìm hiểu để làm một web api nên chỉ quan tâm kết quả trả về, không để ý đến giao diện. Vì thế bài này chắc cũng sẽ không có liên quan tới template, just print :D</p>
+
+<p>Hello World đây:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">web</span>
+<span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span>
+<span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="nb">globals</span><span class="p">())</span>
+
+<span class="k">class</span> <span class="nc">hello</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'Hello World'</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<p>Cài đặt</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo -H pip install web.py
+</code></pre></div>
+<p>Chạy</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">python helloworld.py
+curl http:/127.0.0.1:8080
+</code></pre></div>
+<p>Mặc định nó sẽ bind all network và sử dụng port 8080. Khi chạy thật thì nên thay đổi cho hợp lý, tốt nhất là đổi được cái gì thì đổi, không nên để mặc định. Ví dụ chỉ chạy localhost với port 8000</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">python helloworld.py 127.0.0.1:8000
+</code></pre></div>
+<h2>urls</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Chỉ định các đường url của web. Như ở Hello World phía trên, thằng này chỉ phục vụ 1 url là <code>/</code> (http://127.0.0.1:8080/). Và khi truy cập vào url <code>/</code>, class được chỉ định để xử lý và hiển thị kết quả là <code>hello</code>. Cứ như thế url và class đi với nhau thành 1 cặp và tất cả những urls khác mẫu được khai báo đều 404. Ví dụ tạo trang about:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span><span class="p">,</span>
+  <span class="s">'/about'</span><span class="p">,</span> <span class="s">'about'</span><span class="p">,</span>
+  <span class="s">'/about/me'</span><span class="p">,</span> <span class="s">'about'</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">about</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'Smile'</span>
+</code></pre></div>
+<p>truy cập vào <code>about</code> và <code>about/me</code> cho kết quả như nhau.</p>
+
+<h2>GET</h2>
+
+<p>urls thì có vẻ dễ rồi, đến phần xử lý và trả về kết quả. Cũng dễ cmn nốt, tạo class và trả về thôi</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">about</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'Smile'</span>
+</code></pre></div>
+<p>hiển thị <code>Smile</code> khi vào các urls được khai báo tương ứng với class <code>about</code></p>
+
+<h2>GET/POST và tham số</h2>
+
+<p>Với những static web kiểu blog thì như trên là đủ, nhưng với web api thì còn một vấn đề chúng ta quan tâm là tham số của GET/POST. Dạng thế này <code>/about?name=smile</code>. Hoàn toàn có thể dùng cách truyền thống để lấy các tham số này (biến môi trường của web server) nhưng webpy cũng có cách của nó. GET trước cho nó dễ, đầu tiên khai báo ở url:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span><span class="p">,</span>
+  <span class="s">'/about/(.*)'</span><span class="p">,</span> <span class="s">'about'</span>
+  <span class="s">'/view/(.*)/(.*)'</span><span class="p">,</span> <span class="s">'view'</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><code>(.*)</code> thể hiện url <code>/about</code> có 1 tham số cho GET</p>
+
+<p><code>(.*)/(.*)</code> thể hiện url <code>/view</code> sẽ nhận 2 tham số cho GET</p>
+
+<p>Giờ bắt các tham số này trong class để xử lý thôi</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">about</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'It</span><span class="se">\'</span><span class="s">s '</span> <span class="o">+</span> <span class="n">name</span>
+
+<span class="k">class</span> <span class="nc">view</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">cate</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'It</span><span class="se">\'</span><span class="s">s '</span> <span class="o">+</span> <span class="n">page</span> <span class="o">+</span> <span class="s">' of '</span> <span class="o">+</span> <span class="n">cate</span>
+</code></pre></div>
+<p>Test</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://127.0.0.1:8080/about/smile
+curl http://127.0.0.1:8080/view/page1/cate1
+</code></pre></div>
+<p>Theo cách truyền thống (dùng luôn cả POST và GET) thì url không được đẹp lắm với GET.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span><span class="p">,</span>
+  <span class="s">'/about/(.*)'</span><span class="p">,</span> <span class="s">'about'</span><span class="p">,</span>
+  <span class="s">'/view/(.*)/(.*)'</span><span class="p">,</span> <span class="s">'view'</span><span class="p">,</span>
+  <span class="s">'api'</span><span class="p">,</span> <span class="s">'api'</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">api</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">POST</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"not found"</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"not found"</span>
+        <span class="k">return</span> <span class="n">data</span>
+</code></pre></div>
+<p>Hiển thị giá trị của <code>name</code> được truyền qua GET/POST.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://127.0.0.1:8080/api?name<span class="o">=</span>smile
+curl http://127.0.0.1:8080/api -d <span class="s2">"name=smile"</span>
+</code></pre></div>
+<p><code>web.input()</code> là storage object <code>&lt;Storage {&#39;name&#39;: u&#39;smile&#39;}&gt;%</code> chứa thông tin các tham số truyền lên, để debug có thể print tất cả các tham số <code>return web.input()</code>. Không cần biết chúng ta gửi thông tin lên bằng đường nào, tất cả được thu thập và cho vào object này để chúng ta có thể dễ dàng truy cập qua tên biến <code>web.input().name</code></p>
+
+<p>Ngoài ra chúng ta cũng có thể lấy body data được truyền lên qua
+<code>web.ctx.data</code> sau khi gọi <code>web.input()</code>.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">web</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">web</span><span class="o">.</span><span class="n">ctx</span>
+<span class="k">print</span> <span class="n">web</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="n">data</span>
+</code></pre></div>
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'smilekid1994';
+
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Just a small corner</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Just a small corner</li>
+          <li><a href="mailto:smilekid1994@gmail.com">smilekid1994@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/smilekid1994">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">smilekid1994</span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Hạnh phúc là con đường chứ không phải đích đến.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

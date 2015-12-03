@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ansible Getting Started</title>
+  <meta name="description" content="Ở đây là mình dịch lại và comment AnsibleDocument và coi như cài cài đặt các kiểu ok rồi (cài qua pip ý mà :D). Bây giờ đi vào sâu hơn và bắt đầu với những c...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://smilekid1994.github.io/2015/10/20/ansible-getting-started.html">
+  <link rel="alternate" type="application/rss+xml" title="Just a small corner" href="https://smilekid1994.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Just a small corner</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Ansible Getting Started</h1>
+    <p class="post-meta">Oct 20, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>Ở đây là mình dịch lại và comment <a href="http://docs.ansible.com/ansible/intro_getting_started.html#id4">Ansible
+Document</a> và coi như cài cài đặt các kiểu ok rồi (cài qua pip ý mà :D). Bây giờ đi vào sâu hơn và bắt đầu với những câu lệnh. Do tính chất kĩ thuật nên Anh Việt lẫn lộn nha.</p>
+
+<h2>Remote Connection Information</h2>
+
+<p>Trước khi bắt đầu, anh em phải hiểu cách mà Ansible giao tiếp với server
+qua SSH.</p>
+
+<p>Mặc định, Ansible &gt;=1.3 sẽ sử dụng native OpenSSH để kết nối nếu được.
+Nó cho phép ControlPersist, Kerberos, và các tùy chọn trong
+<code>~/.ssh/config</code> như cấu hình Jump Host. Tuy nhiên, khi sử dụng RHEL 6
+hoặc CentOS 6, phiên bản của OpenSSh có thể quá cũ để hỗ trợ
+ControlPersist. Trên những hệ điều hành này, Ansible sẽ sử dụng
+<code>paramiko</code>, một bản OpenSSL viết bằng Python (thấy bảo là chất lượng
+cao). Nếu muốn sử dụng các tính năng của native OpenSSH như Kerberized
+SSH hay những tùy chọn khác, chắc nên dùng Fedora, OS X hoặc Ubuntu làm
+server điều khiển. Cũng có thể cài đặt manual các phiên bản mới của
+OpenSSH hoặc dùng <code>accelerated mode</code> trong Ansible.</p>
+
+<blockquote>
+<p>Đại khái là nếu dùng CentOS 6 với OpenSSH cũ thì speed có vẻ chậm, nên
+dùng mấy cái OS khác. Cơ mà chắc cài OpenSSH từ source là được.</p>
+</blockquote>
+
+<p>Những phiên bản cũ tới Ansible 1.2, mặc định sử dụng paramiko. Native
+SSH phải được chỉ định qua option -c hoặc đặt trong file cấu hình.</p>
+
+<p>Thỉnh thoảng bạn có thể bắt gặp một thiết bị mà không hỗ trợ SFTP.
+Trường hợp này khá hiếm nhưng vẫn có thẻ xảy ra, bạn có thể chuyển sang
+chế độ SCP trong file cấu hình.</p>
+
+<p>Khi giao tiếp với máy chủ, Ansible mặc định giả sử là bạn đang sử dụng
+SSH keys. SSH keys được khuyên dùng nhưng xác thực bằng password cũng có
+thể được sử dụng với tùy chọn <code>--ask-pass</code>. Nếu sử dụng sudo và cần nhập
+password cho sudo, thêm tùy chọn <code>--ask-sudo-pass</code>.</p>
+
+<p>Một chia sẻ khá phổ biến và hữu ích: Nên để máy quản trị gần với những
+máy chủ mà nó điều khiển (gần về mặt network). Nếu bạn đang chạy Ansible
+trên cloud, tốt nhất chạy nó từ một máy ở bên trong cụm cloud đó. Nó sẽ
+tốt hơn điều khiển qua Internet.</p>
+
+<blockquote>
+<p>Đại khái là nên đặt máy quản lý trong mạng LAN cùng với các máy mà nó
+sẽ triển khai nếu được. Hoặc cùng Datacenter nếu được.</p>
+</blockquote>
+
+<p>Nâng cao hơn, Ansible không chỉ kết nối, điều khiển qua SSH. Nó có thể
+quản lý trực tiếp ở local (chắc kiểu copy script vào rồi chạy), và có
+tùy chọn cho việc quản lý local, cũng như quản lý chroot, lxc, và jail
+containers. Chế độ <code>ansible-pull</code> ngược lại với chế độ mặc định (push
+command qua SSH), có thể chạy trực tiếp các script bằng việc sử dụng git
+lấy về các lệnh cấu hình.</p>
+
+<h2>Những dòng lệnh đầu tiên</h2>
+
+<blockquote>
+<p>Kiểu ngày đầu tiên đi học A B C à???</p>
+</blockquote>
+
+<p>Ok, sau khi cài đặt Ansible, bây giờ chúng ta chơi với vài thứ cơ bản.</p>
+
+<p>Sửa hoặc tạo <code>/etc/ansible/hosts</code> để thêm các remote servers. Sau đó
+thêm public key lên những server này, thường là thêm vào
+<code>~/.ssh/authorized_keys</code>. Ví dụ về file hosts:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">192.168.1.50
+aserver.example.org
+bserver.example.org
+</code></pre></div>
+<p>Đây được gọi là một inventory file, để hiểu sâu hơn về inventory có thể
+đọc thêm tại <a href="http://docs.ansible.com/ansible/intro_inventory.html">Inventory</a>.</p>
+
+<blockquote>
+<p>Trước mắt các link reference sẽ dẫn đến link gốc, sẽ cập nhật nếu dịch
+đến, hoặc không bao giờ nếu bận quá :D</p>
+</blockquote>
+
+<p>Chúng ta sẽ giả sử là đang sử dụng SSH keys để xác thực. Cấu hình SSH
+agent để đỡ phải nhập password liên tục bằng cách:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ssh-agent bash
+<span class="gp">$ </span>ssh-add ~/.ssh/id_rsa
+</code></pre></div>
+<p>(Phụ thuộc vào cài đặt của bạn, có thể sử dụng tùy chọn <code>--private-key</code> để
+sử dụng pem file)</p>
+
+<p>Bây giờ thử ping tất cả các nodes:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ansible all -m ping
+</code></pre></div>
+<p>Ansible sẽ thử kết nối tới các remote servers sử dụng user name hiện
+tại, tương tự với SSH. Để kết nối với user name khác, sử dụng tham số
+<code>-u</code>.</p>
+
+<p>Nếu bạn muốn truy cập chế độ sudo, có vài tùy chọn để thao tác với việc
+này:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># as bruce</span>
+<span class="gp">$ </span>ansible all -m ping -u bruce
+<span class="c"># as bruce sudo to root</span>
+<span class="gp">$ </span>ansible all -m ping -u bruce --sudo
+<span class="c"># as bruce, sudoing to batman</span>
+<span class="gp">$ </span>ansible all -m ping -u bruce --sudo --sudo-user batman
+
+<span class="c"># Từ phiên bản mới nhất, `sudo` được thay thế bằng `become`</span>
+<span class="c"># as bruce, sudoing to root</span>
+<span class="gp">$ </span>ansible all -m ping -u bruce -b
+<span class="c"># as bruce, sudoing to batman</span>
+<span class="gp">$ </span>ansible all -m ping -u bruce -b --become-user batman
+</code></pre></div>
+<p>(Cách thao tác với sudo có thể thay đổi được trong file cấu hình của
+Ansible.  Những tham số đi kèm sudo (ví dụ -H) cũng có thể điều chỉnh.)</p>
+
+<p>Bây giờ thử chạy một lệnh trên tất cả server:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ansible all -a <span class="s2">"/bin/echo hello"</span>
+</code></pre></div>
+<p>Ó sầm. Bạn vừa liên lạc với các nodes bằng Ansible. Trong thời gian ngắn
+tới, chúng ta sẽ: đọc về một vài trường hợp thực tế trong <a href="http://docs.ansible.com/ansible/intro_adhoc.html">Giới thiệu
+Ad-Hoc Commands</a>, tìm
+hiểu những gì có thể làm với những modules khác nhau, học ngôn ngữ
+Ansible Playbooks. Ansible không chỉ là chạy những tập lệnh, nó còn là
+công cụ quản lý cấu hình và triển khai hệ thống khá mạnh. Còn nhiều thứ
+để khám phá, but you already have a fully working infrashtructure!</p>
+
+<h2>Kiểm tra Host Key</h2>
+
+<p>Từ bản Ansible 1.2.1, tính năng kiểm tra host key được bật mặc định.</p>
+
+<p>Nếu một host sau khi cài đặt lại có một key khác trong <code>known_hosts</code>,
+một thông báo lỗi sẽ được trả về đến khi được sửa lại. Nếu một host chưa
+được thêm vào <code>known_hosts</code>, sẽ có prompt để xác nhận key này. Việc này
+yêu cầu người dùng thao tác và trả lời trực tiếp nên không thích hợp với
+cron hoặc at.</p>
+
+<p>Nếu bạn đã biết và muốn bỏ qua hành vi này, bạn có thể làm bằng cách
+chỉnh sửa trong <code>/etc/ansible/ansible.cfg</code> hoặc <code>~/.ansible.cfg</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">[defauts]
+host_key_checking = False
+</code></pre></div>
+<p>Hoặc có thể điều chỉnh qua biến môi trường:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">export </span><span class="nv">ANSIBLE_HOST_KEY_CHECKING</span><span class="o">=</span>False
+</code></pre></div>
+<p>Lưu ý rằng kiểm tra host key ở chế độ paramiko khá chậm, vị vậy nếu sử
+dụng tính năng này, nên chuyển sang dùng ssh.</p>
+
+<p>Ansible sẽ log vài thông tin về những tham số của module trên máy remote
+trong remote syslog, nếu không một task hoặc play sẽ được đánh dấu với
+một thuộc tính <code>no_log: True</code>. Cái này sẽ được làm rõ sau (vì mình cũng
+chưa thử).</p>
+
+<blockquote>
+<p>Hết chap đầu, còn đoạn giới thiệu với quảng cáo éo đọc nữa :D. Thực
+hành sẽ được update sau.</p>
+</blockquote>
+
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'smilekid1994';
+
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Just a small corner</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Just a small corner</li>
+          <li><a href="mailto:smilekid1994@gmail.com">smilekid1994@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/smilekid1994">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">smilekid1994</span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Hạnh phúc là con đường chứ không phải đích đến.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
