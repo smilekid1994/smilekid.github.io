@@ -6,8 +6,8 @@
 </description>
     <link>https://smilekid1994.github.io/</link>
     <atom:link href="https://smilekid1994.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Dec 2015 12:01:07 +0700</pubDate>
-    <lastBuildDate>Thu, 03 Dec 2015 12:01:07 +0700</lastBuildDate>
+    <pubDate>Thu, 03 Dec 2015 14:11:43 +0700</pubDate>
+    <lastBuildDate>Thu, 03 Dec 2015 14:11:43 +0700</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
     
       <item>
@@ -823,6 +823,11 @@ octopress deploy
 
 &lt;p&gt;Giờ ngồi chỉnh lại mấy cái &lt;code&gt;about.md&lt;/code&gt;, &lt;code&gt;_config.yml&lt;/code&gt; sửa mấy cái mặc định
 là thành một cái blog rồi.&lt;/p&gt;
+
+&lt;p&gt;Một việc cần lưu ý là khi chạy &lt;code&gt;deploy&lt;/code&gt; qua bằng octopress, sẽ tạo ra
+một thư mục deploy riêng (mặc định là .deploy) và khởi tạo một git
+repository ở đó. Vì vậy nếu muốn thao tác hoặc chỉnh sửa git config thì
+nên lưu ý cả 2 thư mục là &lt;code&gt;.git&lt;/code&gt; và &lt;code&gt;.deploy/.git&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2&gt;Kết&lt;/h2&gt;
 
