@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Chọn Blog Platform</title>
+  <meta name="description" content="Định kiếm một cái blog mà ngó qua thấy cả mớ. Dạo này đang thíchmarkdown nên đành tìm một cái theo tiêu chí:">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://smilekid1994.github.io/2015/10/12/chon-blog-platform.html">
+  <link rel="alternate" type="application/rss+xml" title="Just a small corner" href="https://smilekid1994.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Just a small corner</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Chọn Blog Platform</h1>
+    <p class="post-meta">Oct 12, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>Định kiếm một cái blog mà ngó qua thấy cả mớ. Dạo này đang thích
+markdown nên đành tìm một cái theo tiêu chí:</p>
+
+<ul>
+<li>Đơn giản</li>
+<li>Có thể viết (quản lý thì tốt) từ terminal</li>
+<li>Chạy được trên một số hosting miễn phí</li>
+<li>Hỗ trợ markdown</li>
+</ul>
+
+<p>Tìm qua thì thấy có vài cái:</p>
+
+<ul>
+<li>octopress</li>
+<li>logdown</li>
+<li>calepin</li>
+<li>wordpress (thằng này thì cái éo gì cũng hỗ trợ :|)</li>
+<li>blogger</li>
+</ul>
+
+<p>Lúc đầu bỏ qua octopress vì thấy nó chỉ là platform (ko có host), bỏ qua
+luôn wordpress, blogger vì thấy nó phức tạp vl, chưa kể là thỉnh thoảng
+còn bị chặn..</p>
+
+<h2><a href="http://calepin.co/">calepin</a></h2>
+
+<p>Khá hứng thú với thằng này vì lấy nội dung từ markdown files, chưa kể
+còn hỗ trợ lấy từ dropbox.
+Ngắm nghía, tạo tài khoản một hồi, sau vào twitter:
+https://twitter.com/calepinapp thì thấy chẳng active gì mấy. Chán lại đi
+tìm tiếp, chưa cả kịp test ^^.</p>
+
+<h2><a href="http://logdown.com">logdown</a></h2>
+
+<p>Trang chủ chuyên nghiệp, tính năng ngon. Back-end ngon, hỗ trợ markdown,
+cho download backup về. Mỗi tội thấy chữ price hơi nản.
+Tuy nhiên vẫn đăng ký 1 tài khoàn free. Tài khoản này chỉ cho phép 1
+static post (chắc là 1 post ở homepage), không cho custom domain. Tìm
+hiểu thêm thì thấy bạn này lại là hàng Tàu. Bản thân anh không cầu kì gì
+nhưng không thích gò bó, tạm bỏ qua đã.</p>
+
+<h2><a href="https://github.com/octopress/octopress">octopress</a> &amp; <a href="https://github.com/jekyll/jekyll">jekyll</a></h2>
+
+<p>Quay lại đọc kĩ bạn octopress này thì lại thấy phù hợp với các yêu cầu của mình.
+Hóa ra nó là framework nhưng là viết cho jekyll, chính là cái mình đang
+tìm và nó được dùng cho các trang của github.io.</p>
+
+<ul>
+<li>Đơn giản, không có database</li>
+<li>Nội dung được viết bằng markup language (hỗ trợ markdown)</li>
+<li>Lưu trữ trên github (mình thích cái này), s3, rsync (chưa test chắc
+đẩy lên web server bình thường)</li>
+<li>Hỗ trợ các tính năng của blog: categories, pages, comment, theme các kiểu</li>
+</ul>
+
+<p>Kiểu hoạt động của nó là thế này: Thằng jekyll là thằng base, thằng
+octopress là thằng làm cho jekyll dễ sử dụng hơn. Nội dung của blog sẽ
+được viết bằng markdown, textile hoặc html, sau đó jekyll sẽ build toàn
+bộ thành html để tạo thành website.</p>
+
+<p>Kiểu build thành html này load trang thì nhanh vđ.</p>
+
+<p>Trang web sau khi build sẽ được push lên master branch của github.io,
+còn nội dung chưa build sẽ được push lên source branch.</p>
+
+<p>OK. Giờ tất cả những gì chúng ta cần là:</p>
+
+<ul>
+<li>vim</li>
+<li>git client</li>
+<li>github account</li>
+<li>octopress and jekyll gems</li>
+<li>thêm cái browser để ngắm nữa</li>
+</ul>
+
+<h3>Triển thôi</h3>
+
+<p>Cài đặt</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo -H gem install octopress
+octopress new /path/to/blog_folder
+<span class="nb">cd </span>blog_folder
+</code></pre></div>
+<p>Tạo mới 1 post</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">octopress new post <span class="s2">"title"</span> --slug <span class="s2">"day-la-slug"</span>
+</code></pre></div>
+<p>Lệnh trên sẽ tạo 1 file <code>_posts/yyyy-mm-dd-day-la-slug.markdown</code>. Bây
+giờ chỉ việc mở file này và viết 1 post bằng markdown.
+Quá đơn giản.</p>
+
+<p>Preview blog in localhost</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">jekyll build
+jekyll server
+</code></pre></div>
+<p>Một web server đơn giản sẽ được tạo ra tại <a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a> để view blog. Nếu không muốn
+publish thì có thể dừng ở đây. Làm một cái local diary :D</p>
+
+<p><strong>publish</strong></p>
+
+<p>Việc đầu tiên là tạo một chỗ để chứa nó trên internet cái đã. Như đã nói
+ở trên thì thằng này hỗ trợ github, s3, rsync (vcđ). Chọn github cho nó
+đơn giản.</p>
+
+<p>Tạo một project với tên là: username.github.io. Sẽ được một cái git repo
+kiểu: <a href="https://github.com/smilekid1994/smilekid1994.github.io">https://github.com/smilekid1994/smilekid1994.github.io</a>. Repo này
+sẽ chứa cả source (markdown post) và website luôn (sau khi build bằng
+jekyll)</p>
+
+<p>Giờ tới việc link local blog với github repo đã tạo ở trên.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>blog-folder
+git init
+octopress deploy init git https://github.com/smilekid1994/smilekid1994.github.io
+git remote add origin https://github.com/smilekid1994/smilekid1994.github.io
+</code></pre></div>
+<p>file <code>_deploy.yml</code> sẽ được tạo ra, giữ luôn giá trị mặc định cho nó đẹp
+:D. Add file này vào <code>.gitignore</code> cho nó lành.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">"_deploy.yml"</span> &gt;&gt; .gitignore
+</code></pre></div>
+<p>Thử deploy local blog lên github</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># build lại phát cho chắc ăn</span>
+jekyll build
+git add .
+<span class="c"># check lại các thư mục vì lệnh trên sẽ đưa tất cả vào repo</span>
+git status
+git commit -m <span class="s2">"init blog"</span>
+
+<span class="c"># deploy</span>
+octopress deploy
+
+<span class="c"># nếu chưa có branch source thì sẽ được cảnh báo và tạo manual</span>
+git checkout -b <span class="nb">source
+</span>git push origin <span class="nb">source</span>
+
+<span class="c"># thử deploy lại</span>
+octopress deploy
+</code></pre></div>
+<p>Nếu mọi thứ bình thường thì sẽ view được qua url
+<a href="http://username.github.io">http://username.github.io</a></p>
+
+<p>Giờ ngồi chỉnh lại mấy cái <code>about.md</code>, <code>_config.yml</code> sửa mấy cái mặc định
+là thành một cái blog rồi.</p>
+
+<h2>Kết</h2>
+
+<p>Cái này dùng liquid template nên có thể tùy chỉnh rất nhiều thứ. Chắc là
+sẽ có một bài sử dụng chi tiết đi sâu vào việc viết blog và template,
+cái này chỉ là cài đặt. Mà đm, nói wordpress phức tạp chắc nhiều người
+thấy cái này cũng phức tạp vl =)).</p>
+
+<p>Cơ mà mình thấy rất đơn giản và happy ^^</p>
+
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'smilekid1994';
+
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Just a small corner</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Just a small corner</li>
+          <li><a href="mailto:smilekid1994@gmail.com">smilekid1994@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/smilekid1994">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">smilekid1994</span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Hạnh phúc là con đường chứ không phải đích đến.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

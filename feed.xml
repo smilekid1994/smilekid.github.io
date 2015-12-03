@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Just a small corner</title>
+    <description>Hạnh phúc là con đường chứ không phải đích đến.
+</description>
+    <link>https://smilekid1994.github.io/</link>
+    <atom:link href="https://smilekid1994.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 03 Dec 2015 11:27:46 +0700</pubDate>
+    <lastBuildDate>Thu, 03 Dec 2015 11:27:46 +0700</lastBuildDate>
+    <generator>Jekyll v3.0.0</generator>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 03 Dec 2015 11:26:15 +0700</pubDate>
+        <link>https://smilekid1994.github.io/jekyll/update/2015/12/03/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">https://smilekid1994.github.io/jekyll/update/2015/12/03/welcome-to-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Sử Lỗi Uuid Khi Build Trong Mac Port</title>
+        <description>&lt;p&gt;Hôm nay đẹp trời nâng cấp mớ lùng bùng trong mac port nhưng lại gặp lỗi
+dở hơi, cũng mất tí thời gian nên note lại ai chẳng may gặp thì fix.&lt;/p&gt;
+
+&lt;p&gt;Nâng cấp toàn bộ packages&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo port upgrade outdated
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Gặp lỗi khi build&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;error: unknown type name &#39;uuid_string_t&#39;; did you mean &#39;io_string_t mac
+port
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Tìm loanh quanh thì phát hiện ra là nó đã sử dụng file header sai của
+thư viện uuid &lt;code&gt;/usr/local/include/uuid/uuid.h&lt;/code&gt;. Bình thường mac port
+không khuyến khích anh em cài các thư viện hoặc tools vào &lt;code&gt;/usr/local/&lt;/code&gt;
+vì có thể gặp conflict. Cơ mà chẳng may rồi thì tạm thời bỏ đi vậy.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo mv /usr/local/include/uuid/uuid.h{,.bak}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Chờ nâng cấp xong lại move về như cũ hoặc cứ để đấy, chạy cái gì thấy
+lỗi thì move sau.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo mv /usr/local/include/uuid/uuid.h{.bak,}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Các trường hợp conflict khác cũng có thể xử lý tương tự, việc đầu tiên
+là cần tìm header mà nó sử dụng. Sau đó quét toàn bộ hệ thống xem có
+những file nào. Thử đổi tên lần lượt và check lại.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;find / -name &quot;uuid.h&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Wed, 02 Dec 2015 16:10:28 +0700</pubDate>
+        <link>https://smilekid1994.github.io/2015/12/02/sua-loi-uuid-khi-build-trong-mac-port.html</link>
+        <guid isPermaLink="true">https://smilekid1994.github.io/2015/12/02/sua-loi-uuid-khi-build-trong-mac-port.html</guid>
+        
+        <category>personal</category>
+        
+        <category>log</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Secure SSH Server</title>
+        <description>&lt;p&gt;Sau khi cài đặt server với một password đủ mạnh thì chúng ta đã khá yên
+tâm với sự an toàn của server. Nhưng để chạy trong một thời gian dài thì
+nên thay đổi và bổ sung một vài thứ thay vì giữ mọi thứ mặc định.&lt;/p&gt;
+
+&lt;h2&gt;Sử dụng phiên bản mới nhất&lt;/h2&gt;
+
+&lt;p&gt;Nâng cấp phiên bản mới nhất đi theo OS hoặc có thể cài đặt từ mã nguồn.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.openssh.com/portable.html&quot;&gt;http://www.openssh.com/portable.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Chú ý backup các file config nếu cần thiết và build với tùy chọn
+&lt;code&gt;--with-pam&lt;/code&gt; có thể sau này sẽ cần dùng.&lt;/p&gt;
+
+&lt;h2&gt;Đổi port&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Port 2222
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Nhiều người cho rằng việc này không cần thiết nhưng sau một thời gian
+dài làm việc với server, mình thấy nên đổi. Có một số trường hợp do bất
+cẩn chưa setup firewall, dùng weak password nên đã bị chiếm quyền. Dù
+khả năng xảy ra là nhỏ nhưng với một admin thì vẫn nên cẩn thận.&lt;/p&gt;
+
+&lt;h2&gt;Đổi host nếu cần thiết&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ListenAddress 0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mặc định thì sshd sẽ listen trên tất cả các IPs của server (wan, lan các
+kiểu). Trong một số trường hợp chúng ta chỉ cho phép ssh qua LAN thì
+cũng nên điều chỉnh cho chắc.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ListenAddress 192.168.2.22
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Vô hiệu hóa tài khoản root&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;PermitRootLogin no
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Sau khi tạo một tài khoản có quyền sudo chúng ta có thể tắt đăng nhập
+qua tài khoản root. Việc này cũng giống như việc đổi port và host, có
+thể tránh được một số công cụ quét. Nếu cần sử dụng root có thể su từ
+tài khoản thường sang.&lt;/p&gt;
+
+&lt;h2&gt;Chỉ định user có thể đăng nhập&lt;/h2&gt;
+
+&lt;p&gt;Chỉ định các user có thể đăng nhập vào hệ thống. Nếu dùng cách này thì
+không cẩn vô hiệu tài khoản root, chỉ cần không đưa root vào danh sách.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;AllowUsers user1
+AllowUsers user2
+AllowUsers user3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Sử dụng Public/Private keys để xác thực&lt;/h2&gt;
+
+&lt;p&gt;Với cách xác thực này thì máy tính nào có private key tương ứng với
+public key được lưu trên server thì mới có thể đăng nhập. Cách này rất
+an toàn và được khuyến khích sử dụng mặc định. Khi tạo cặp keys thì lưu
+ý nên để passphrase tránh trường hợp mất máy hoặc ai đó xin được key của
+mình :D.&lt;/p&gt;
+
+&lt;h2&gt;Bỏ đăng nhập bằng mật khẩu&lt;/h2&gt;
+
+&lt;p&gt;Sử dụng keys để đăng nhập thì chúng ta nên bỏ đăng nhập bằng mật khẩu,
+chỉ những ai có key mới đăng nhập được.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;# Disable password authentication forcing use of keys
+PasswordAuthentication no
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Sử dụng firewall&lt;/h2&gt;
+
+&lt;p&gt;Để thêm an toàn chúng ta có thể sử dụng iptables để limit ip và limit
+rate.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;iptables -A INPUT -p tcp --dport 2222 -m state --state NEW -m recent --set --name ssh --rsource
+iptables -A INPUT -p tcp -m tcp --dport 2222 -m state --state NEW -m recent --update --seconds 60 --hitcount 6 --rttl --name SSH --rsource -j REJECT --reject-with icmp-port-unreachable
+iptables -A INPUT -p tcp -s 192.168.2.2 --dport 2222 -j ACCEPT
+iptables -A INPUT -j DROP
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Từ chối nếu có quá 6 kết nối trong 1 phút và chỉ chấp nhận kết nối từ
+192.168.2.2.&lt;/p&gt;
+
+&lt;p&gt;Nếu hệ thống cần mở cho nhiều user từ nhiều nơi truy cập thì nên chặn
+một số IPs đen. Danh sách thì có nhiều nguồn, một trong số đó là
+&lt;a href=&quot;http://www.openbl.org&quot;&gt;http://www.openbl.org&lt;/a&gt;. Theo mình thì cứ Tàu và Nga ngố là bem hết ^^&lt;/p&gt;
+
+&lt;h2&gt;Bật đăng nhập 2 lần&lt;/h2&gt;
+
+&lt;p&gt;Sư dụng PAM để bật đăng nhập 2 lần với Google Authenticator. Sử dụng
+phần này thì cần build bản openssh với &lt;code&gt;--with-pam&lt;/code&gt; và dùng phiên bản
+openssl từ 6.4 (hình như thế, cứ xài bản mới nhất cho chắc ăn).&lt;/p&gt;
+
+&lt;p&gt;Cài luôn từ repo của OS gói &lt;code&gt;google-authenticator&lt;/code&gt; (tên gói có thể khác
+ở các OSs khác nhau).
+Hoặc build từ source&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;https://github.com/google/google-authenticator/tree/master/libpam
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Thư viện sẽ được cài đặt tại &lt;code&gt;/lib64/security/pam_google_authenticator.so&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Cấu hình &lt;code&gt;sshd_config&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ChallengeResponseAuthentication yes
+UsePAM yes
+AuthenticationMethods publickey,keyboard-interactive
+PasswordAuthentication no
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Cấu hình PAM &lt;code&gt;/etc/pam.d/sshd&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;auth required pam_google_authenticator.so
+##
+auth       required pam_sepermit.so
+#auth       include      password-auth
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Chú ý comment password-auth để bỏ qua yêu cầu nhập password.&lt;/p&gt;
+
+&lt;p&gt;Để lấy verification code chạy lệnh: &lt;code&gt;google-authenticator&lt;/code&gt; và làm theo
+hướng dẫn. Lưu lại mấy cái code backup để phòng khi mưa gió.&lt;/p&gt;
+
+&lt;p&gt;Kick hết các users đang đăng nhập vào hệ thống để test thử. Sau khi nhập
+passphrase là yêu cầu nhập verification code.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo /etc/init.d/sshd restart
+sudo skill -KILL -u user
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Check log thường xuyên&lt;/h2&gt;
+
+&lt;p&gt;Thường xuyên theo dõi log để phát hiện sớm những trường hợp khả nghi.
+Phát hiện sớm là bộ môn rất quan trọng trong việc quản trị hệ thống.&lt;/p&gt;
+
+&lt;h2&gt;Lưu ý&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sau khi sửa cấu hình thì reload lại sshd&lt;/li&gt;
+&lt;li&gt;Luôn giữ lại 1 shell backup, tránh tự chặt tay&lt;/li&gt;
+&lt;li&gt;Cẩn thận khi thao tác với iptables, nên đặt lệnh clear nếu không chắc
+chắn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Tham khảo&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.centos.org/HowTos/Network/SecuringSSH&quot;&gt;https://wiki.centos.org/HowTos/Network/SecuringSSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.openssh.com/&quot;&gt;http://www.openssh.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/google/google-authenticator/wiki&quot;&gt;https://github.com/google/google-authenticator/wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Tue, 24 Nov 2015 23:15:49 +0700</pubDate>
+        <link>https://smilekid1994.github.io/2015/11/24/secure-ssh-server.html</link>
+        <guid isPermaLink="true">https://smilekid1994.github.io/2015/11/24/secure-ssh-server.html</guid>
+        
+        <category>log</category>
+        
+        <category>secure</category>
+        
+        <category>linux</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Webpy tạo web api Với Python</title>
+        <description>&lt;p&gt;Sau khi tìm loanh quanh để viết một web service đơn giản với python thì
+thấy thằng này webpy này có vẻ ổn. Mình chỉ tìm hiểu để làm một web api nên chỉ quan tâm kết quả trả về, không để ý đến giao diện. Vì thế bài này chắc cũng sẽ không có liên quan tới template, just print :D&lt;/p&gt;
+
+&lt;p&gt;Hello World đây:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;web&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Hello World&#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Cài đặt&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo -H pip install web.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Chạy&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;python helloworld.py
+curl http:/127.0.0.1:8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mặc định nó sẽ bind all network và sử dụng port 8080. Khi chạy thật thì nên thay đổi cho hợp lý, tốt nhất là đổi được cái gì thì đổi, không nên để mặc định. Ví dụ chỉ chạy localhost với port 8000&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;python helloworld.py 127.0.0.1:8000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;urls&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Chỉ định các đường url của web. Như ở Hello World phía trên, thằng này chỉ phục vụ 1 url là &lt;code&gt;/&lt;/code&gt; (http://127.0.0.1:8080/). Và khi truy cập vào url &lt;code&gt;/&lt;/code&gt;, class được chỉ định để xử lý và hiển thị kết quả là &lt;code&gt;hello&lt;/code&gt;. Cứ như thế url và class đi với nhau thành 1 cặp và tất cả những urls khác mẫu được khai báo đều 404. Ví dụ tạo trang about:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/about&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/about/me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Smile&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;truy cập vào &lt;code&gt;about&lt;/code&gt; và &lt;code&gt;about/me&lt;/code&gt; cho kết quả như nhau.&lt;/p&gt;
+
+&lt;h2&gt;GET&lt;/h2&gt;
+
+&lt;p&gt;urls thì có vẻ dễ rồi, đến phần xử lý và trả về kết quả. Cũng dễ cmn nốt, tạo class và trả về thôi&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Smile&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;hiển thị &lt;code&gt;Smile&lt;/code&gt; khi vào các urls được khai báo tương ứng với class &lt;code&gt;about&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;GET/POST và tham số&lt;/h2&gt;
+
+&lt;p&gt;Với những static web kiểu blog thì như trên là đủ, nhưng với web api thì còn một vấn đề chúng ta quan tâm là tham số của GET/POST. Dạng thế này &lt;code&gt;/about?name=smile&lt;/code&gt;. Hoàn toàn có thể dùng cách truyền thống để lấy các tham số này (biến môi trường của web server) nhưng webpy cũng có cách của nó. GET trước cho nó dễ, đầu tiên khai báo ở url:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/about/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/view/(.*)/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;view&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;(.*)&lt;/code&gt; thể hiện url &lt;code&gt;/about&lt;/code&gt; có 1 tham số cho GET&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;(.*)/(.*)&lt;/code&gt; thể hiện url &lt;code&gt;/view&lt;/code&gt; sẽ nhận 2 tham số cho GET&lt;/p&gt;
+
+&lt;p&gt;Giờ bắt các tham số này trong class để xử lý thôi&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;It&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;It&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; of &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cate&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Test&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl http://127.0.0.1:8080/about/smile
+curl http://127.0.0.1:8080/view/page1/cate1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Theo cách truyền thống (dùng luôn cả POST và GET) thì url không được đẹp lắm với GET.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/about/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;/view/(.*)/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;view&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&#39;api&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;api&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;not found&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;not found&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hiển thị giá trị của &lt;code&gt;name&lt;/code&gt; được truyền qua GET/POST.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl http://127.0.0.1:8080/api?name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;smile
+curl http://127.0.0.1:8080/api -d &lt;span class=&quot;s2&quot;&gt;&quot;name=smile&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;web.input()&lt;/code&gt; là storage object &lt;code&gt;&amp;lt;Storage {&amp;#39;name&amp;#39;: u&amp;#39;smile&amp;#39;}&amp;gt;%&lt;/code&gt; chứa thông tin các tham số truyền lên, để debug có thể print tất cả các tham số &lt;code&gt;return web.input()&lt;/code&gt;. Không cần biết chúng ta gửi thông tin lên bằng đường nào, tất cả được thu thập và cho vào object này để chúng ta có thể dễ dàng truy cập qua tên biến &lt;code&gt;web.input().name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ngoài ra chúng ta cũng có thể lấy body data được truyền lên qua
+&lt;code&gt;web.ctx.data&lt;/code&gt; sau khi gọi &lt;code&gt;web.input()&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Fri, 13 Nov 2015 11:28:35 +0700</pubDate>
+        <link>https://smilekid1994.github.io/2015/11/13/webpy-to-website-vi-python.html</link>
+        <guid isPermaLink="true">https://smilekid1994.github.io/2015/11/13/webpy-to-website-vi-python.html</guid>
+        
+        <category>personal</category>
+        
+        <category>log</category>
+        
+        <category>python</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Ansible Getting Started</title>
+        <description>&lt;p&gt;Ở đây là mình dịch lại và comment &lt;a href=&quot;http://docs.ansible.com/ansible/intro_getting_started.html#id4&quot;&gt;Ansible
+Document&lt;/a&gt; và coi như cài cài đặt các kiểu ok rồi (cài qua pip ý mà :D). Bây giờ đi vào sâu hơn và bắt đầu với những câu lệnh. Do tính chất kĩ thuật nên Anh Việt lẫn lộn nha.&lt;/p&gt;
+
+&lt;h2&gt;Remote Connection Information&lt;/h2&gt;
+
+&lt;p&gt;Trước khi bắt đầu, anh em phải hiểu cách mà Ansible giao tiếp với server
+qua SSH.&lt;/p&gt;
+
+&lt;p&gt;Mặc định, Ansible &amp;gt;=1.3 sẽ sử dụng native OpenSSH để kết nối nếu được.
+Nó cho phép ControlPersist, Kerberos, và các tùy chọn trong
+&lt;code&gt;~/.ssh/config&lt;/code&gt; như cấu hình Jump Host. Tuy nhiên, khi sử dụng RHEL 6
+hoặc CentOS 6, phiên bản của OpenSSh có thể quá cũ để hỗ trợ
+ControlPersist. Trên những hệ điều hành này, Ansible sẽ sử dụng
+&lt;code&gt;paramiko&lt;/code&gt;, một bản OpenSSL viết bằng Python (thấy bảo là chất lượng
+cao). Nếu muốn sử dụng các tính năng của native OpenSSH như Kerberized
+SSH hay những tùy chọn khác, chắc nên dùng Fedora, OS X hoặc Ubuntu làm
+server điều khiển. Cũng có thể cài đặt manual các phiên bản mới của
+OpenSSH hoặc dùng &lt;code&gt;accelerated mode&lt;/code&gt; trong Ansible.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Đại khái là nếu dùng CentOS 6 với OpenSSH cũ thì speed có vẻ chậm, nên
+dùng mấy cái OS khác. Cơ mà chắc cài OpenSSH từ source là được.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Những phiên bản cũ tới Ansible 1.2, mặc định sử dụng paramiko. Native
+SSH phải được chỉ định qua option -c hoặc đặt trong file cấu hình.&lt;/p&gt;
+
+&lt;p&gt;Thỉnh thoảng bạn có thể bắt gặp một thiết bị mà không hỗ trợ SFTP.
+Trường hợp này khá hiếm nhưng vẫn có thẻ xảy ra, bạn có thể chuyển sang
+chế độ SCP trong file cấu hình.&lt;/p&gt;
+
+&lt;p&gt;Khi giao tiếp với máy chủ, Ansible mặc định giả sử là bạn đang sử dụng
+SSH keys. SSH keys được khuyên dùng nhưng xác thực bằng password cũng có
+thể được sử dụng với tùy chọn &lt;code&gt;--ask-pass&lt;/code&gt;. Nếu sử dụng sudo và cần nhập
+password cho sudo, thêm tùy chọn &lt;code&gt;--ask-sudo-pass&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Một chia sẻ khá phổ biến và hữu ích: Nên để máy quản trị gần với những
+máy chủ mà nó điều khiển (gần về mặt network). Nếu bạn đang chạy Ansible
+trên cloud, tốt nhất chạy nó từ một máy ở bên trong cụm cloud đó. Nó sẽ
+tốt hơn điều khiển qua Internet.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Đại khái là nên đặt máy quản lý trong mạng LAN cùng với các máy mà nó
+sẽ triển khai nếu được. Hoặc cùng Datacenter nếu được.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nâng cao hơn, Ansible không chỉ kết nối, điều khiển qua SSH. Nó có thể
+quản lý trực tiếp ở local (chắc kiểu copy script vào rồi chạy), và có
+tùy chọn cho việc quản lý local, cũng như quản lý chroot, lxc, và jail
+containers. Chế độ &lt;code&gt;ansible-pull&lt;/code&gt; ngược lại với chế độ mặc định (push
+command qua SSH), có thể chạy trực tiếp các script bằng việc sử dụng git
+lấy về các lệnh cấu hình.&lt;/p&gt;
+
+&lt;h2&gt;Những dòng lệnh đầu tiên&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Kiểu ngày đầu tiên đi học A B C à???&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ok, sau khi cài đặt Ansible, bây giờ chúng ta chơi với vài thứ cơ bản.&lt;/p&gt;
+
+&lt;p&gt;Sửa hoặc tạo &lt;code&gt;/etc/ansible/hosts&lt;/code&gt; để thêm các remote servers. Sau đó
+thêm public key lên những server này, thường là thêm vào
+&lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt;. Ví dụ về file hosts:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;192.168.1.50
+aserver.example.org
+bserver.example.org
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Đây được gọi là một inventory file, để hiểu sâu hơn về inventory có thể
+đọc thêm tại &lt;a href=&quot;http://docs.ansible.com/ansible/intro_inventory.html&quot;&gt;Inventory&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Trước mắt các link reference sẽ dẫn đến link gốc, sẽ cập nhật nếu dịch
+đến, hoặc không bao giờ nếu bận quá :D&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Chúng ta sẽ giả sử là đang sử dụng SSH keys để xác thực. Cấu hình SSH
+agent để đỡ phải nhập password liên tục bằng cách:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ssh-agent bash
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ssh-add ~/.ssh/id_rsa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;(Phụ thuộc vào cài đặt của bạn, có thể sử dụng tùy chọn &lt;code&gt;--private-key&lt;/code&gt; để
+sử dụng pem file)&lt;/p&gt;
+
+&lt;p&gt;Bây giờ thử ping tất cả các nodes:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ansible sẽ thử kết nối tới các remote servers sử dụng user name hiện
+tại, tương tự với SSH. Để kết nối với user name khác, sử dụng tham số
+&lt;code&gt;-u&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nếu bạn muốn truy cập chế độ sudo, có vài tùy chọn để thao tác với việc
+này:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# as bruce&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce
+&lt;span class=&quot;c&quot;&gt;# as bruce sudo to root&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce --sudo
+&lt;span class=&quot;c&quot;&gt;# as bruce, sudoing to batman&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce --sudo --sudo-user batman
+
+&lt;span class=&quot;c&quot;&gt;# Từ phiên bản mới nhất, `sudo` được thay thế bằng `become`&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# as bruce, sudoing to root&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce -b
+&lt;span class=&quot;c&quot;&gt;# as bruce, sudoing to batman&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce -b --become-user batman
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;(Cách thao tác với sudo có thể thay đổi được trong file cấu hình của
+Ansible.  Những tham số đi kèm sudo (ví dụ -H) cũng có thể điều chỉnh.)&lt;/p&gt;
+
+&lt;p&gt;Bây giờ thử chạy một lệnh trên tất cả server:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -a &lt;span class=&quot;s2&quot;&gt;&quot;/bin/echo hello&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ó sầm. Bạn vừa liên lạc với các nodes bằng Ansible. Trong thời gian ngắn
+tới, chúng ta sẽ: đọc về một vài trường hợp thực tế trong &lt;a href=&quot;http://docs.ansible.com/ansible/intro_adhoc.html&quot;&gt;Giới thiệu
+Ad-Hoc Commands&lt;/a&gt;, tìm
+hiểu những gì có thể làm với những modules khác nhau, học ngôn ngữ
+Ansible Playbooks. Ansible không chỉ là chạy những tập lệnh, nó còn là
+công cụ quản lý cấu hình và triển khai hệ thống khá mạnh. Còn nhiều thứ
+để khám phá, but you already have a fully working infrashtructure!&lt;/p&gt;
+
+&lt;h2&gt;Kiểm tra Host Key&lt;/h2&gt;
+
+&lt;p&gt;Từ bản Ansible 1.2.1, tính năng kiểm tra host key được bật mặc định.&lt;/p&gt;
+
+&lt;p&gt;Nếu một host sau khi cài đặt lại có một key khác trong &lt;code&gt;known_hosts&lt;/code&gt;,
+một thông báo lỗi sẽ được trả về đến khi được sửa lại. Nếu một host chưa
+được thêm vào &lt;code&gt;known_hosts&lt;/code&gt;, sẽ có prompt để xác nhận key này. Việc này
+yêu cầu người dùng thao tác và trả lời trực tiếp nên không thích hợp với
+cron hoặc at.&lt;/p&gt;
+
+&lt;p&gt;Nếu bạn đã biết và muốn bỏ qua hành vi này, bạn có thể làm bằng cách
+chỉnh sửa trong &lt;code&gt;/etc/ansible/ansible.cfg&lt;/code&gt; hoặc &lt;code&gt;~/.ansible.cfg&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;[defauts]
+host_key_checking = False
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hoặc có thể điều chỉnh qua biến môi trường:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANSIBLE_HOST_KEY_CHECKING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;False
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lưu ý rằng kiểm tra host key ở chế độ paramiko khá chậm, vị vậy nếu sử
+dụng tính năng này, nên chuyển sang dùng ssh.&lt;/p&gt;
+
+&lt;p&gt;Ansible sẽ log vài thông tin về những tham số của module trên máy remote
+trong remote syslog, nếu không một task hoặc play sẽ được đánh dấu với
+một thuộc tính &lt;code&gt;no_log: True&lt;/code&gt;. Cái này sẽ được làm rõ sau (vì mình cũng
+chưa thử).&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Hết chap đầu, còn đoạn giới thiệu với quảng cáo éo đọc nữa :D. Thực
+hành sẽ được update sau.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Tue, 20 Oct 2015 10:34:28 +0700</pubDate>
+        <link>https://smilekid1994.github.io/2015/10/20/ansible-getting-started.html</link>
+        <guid isPermaLink="true">https://smilekid1994.github.io/2015/10/20/ansible-getting-started.html</guid>
+        
+        <category>ansible</category>
+        
+        <category>log</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>[6m English] Does Your Cv Shine?</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=K1I365lGaUE&quot;&gt;https://www.youtube.com/watch?v=K1I365lGaUE&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Hello, I&amp;#39;m Rob. Welcome to 6 Minute English. With me in the
+studio today is Neil. Hello, Neil!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Hello there, Rob!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Now I bet you have an impressive CV, Neil. &lt;strong&gt;CV&lt;/strong&gt; is short for
+curriculum vitae - that&amp;#39;s a Latin expression we use for the document in
+which people list their work history, education, interests and
+abilities. In other parts of the English-speaking world it&amp;#39;s called a
+resume. Now, Neil, I know you are a very good teacher and producer, but
+does your CV actually shine?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Well, I hope it&amp;#39;s good enough to impress hiring managers. But
+it&amp;#39;s a challenge to prove on a piece of paper or online document that
+you&amp;#39;re really better than the other people who are competing for the
+same position.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Today we&amp;#39;re talking about CVs and you&amp;#39;ll learn some words
+related to this topic, which will esecially interest jobseekers - that&amp;#39;s
+what we call people looking for work.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Yes, and jobseekers have to worry about having an impressive
+CV so they get that call for a job interview.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Yes, the CV is just the beginning. And, as you mentioned job
+interviews, I&amp;#39;ll ask you a question all about this. According to a
+recent survey, managers decide quite quickly if they&amp;#39;re going to really
+consider giving a candidate a job or not. So, when you go for a job
+interview how long do you have, on average, to make a good enough
+impression for an employer to hire you? Do you have...&lt;/p&gt;
+
+&lt;p&gt;a) Less than 3 miniutes&lt;/p&gt;
+
+&lt;p&gt;b) Less than 5 minutes&lt;/p&gt;
+
+&lt;p&gt;c) Less than 10 minutes&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Well, i think it&amp;#39;s probably quite short so I&amp;#39;m going to go
+for: (b) 5 minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Well, you&amp;#39;ll have the correct answer - the result of this
+survey - at the end of the programme. But people have done all sorts of
+unusual things to reach the interview level. One of them is Briton
+Daniel Conway, who went from posing shirtless in the street with the
+phrase &amp;quot;employ me&amp;quot; written on his chest to uploading a video on social
+media asking to be hired.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Ah, this video went viral - it means became popular very
+quickly. In it his daughter appears next to the phrase &amp;quot;give my dad a
+job&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Yes. Daniel Conway tells us about his experience looking for
+work. Which word does he use when he says he wanted to be noticed?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Daniel Conway, former jobseeker:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I just thought as a young naive kid that I would kind of walk into a
+job, but the truth is, you know, there are a lot of good people out
+there who got just a great skill and I realised at that point that
+you&amp;#39;re got &lt;strong&gt;to stand out&lt;/strong&gt; and &lt;strong&gt;get your strengths across.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: He uses the phrasal verb to stand out - it means to be more
+than others in the same group.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Dan Conway uses another phrasal verb: &lt;strong&gt;get your strengths
+across&lt;/strong&gt; - to get something across means to make something clear. In
+this case he wants the employer to understand how good he is as a
+potential employee, his strengths and his good qualities.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: And did he get a job?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Well, yes, he did. And I&amp;#39;m glad to say that after four years
+this 29-year-old man got a job marketing vitamins!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Well, we can say that he was good at marketing himself.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Yes, we can. Well, he was bold and courageous in his attempts
+to catch potential employers&amp;#39; attention. He showed a quality described
+by career coach Corinne Mills. Listen to what she says and tell me: what
+is the quality jobseekers have to show for sure.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Corinne Mills, MD - Personal Career Management:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You&amp;#39;ve got to be &lt;strong&gt;confident&lt;/strong&gt;! mean, if you are not confident about
+your skills and abilities, then why should an employer have faith in
+you? So, don&amp;#39;t be &lt;strong&gt;modest&lt;/strong&gt;. This is your opportunity to really show
+your skills and experience and what a great performer you&amp;#39;re gonna be in
+the job.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: The career coach says your&amp;#39;ve got to be confident! It means
+self-assured, believe in your capacity to do things. And sometimes we
+feel that it isn&amp;#39;t nice to say &amp;quot;I&amp;#39;m very good at this&amp;quot; or &amp;quot;I&amp;#39;m wonderful
+at that&amp;quot; but she advises you not to be modest.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Exactly. Modest means humble, moderate when talking about your
+abilities.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: You know, Rob, I&amp;#39;ve got some top tips for people writing their
+CV.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: OK, well, let&amp;#39;s have them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Yes. Here is the first one: you have to be concise - it means
+brief, give the information in a few words. Maybe you could write a
+brief profile at the top and keep the CV to just two pages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Thank you. That&amp;#39;s a good bit of advice. And I think you should
+give evidence of success in previous jobs. If a presentation you did
+helped you to get a client you should include it there. And be accurate,
+in other words, be precise and tell the truth. Don&amp;#39;t invent things.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: And you should also remember to check your spelling and
+grammar!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Yes, that&amp;#39;s very important! Well, we wish everybody success
+when writing and sending out their CV, and we hope they are called for
+a job interview, in which they have a very short period of time to leave
+a good impression...&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: Indeed! So how long after all is this period of time,
+according to your survey? Did i get the answer to the question you asked
+at the beginning of the programme right?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: Well, I asked you: how long do you have on average to make a
+good enough impression for an employer to hire you? Do you have less
+than 3 minutes, less than 5 minutes or less than 10 minutes?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;: And I said less than 5 minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rob&lt;/strong&gt;: And you&amp;#39;re wrong. The correct answer is actually less than 10
+minutes, so you&amp;#39;d have a little bit longer. Jobseekers have on average
+just six minutes and 25 seconds during the first meeting to impress
+potential employers. That&amp;#39;s according to a new study from the webstie
+monster.co.uk. And we&amp;#39;re almost out of time. So let&amp;#39;s remmeber some of
+the words we said today, Neil.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Neil&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CV (curriculum vitae)&lt;/strong&gt; - document in which you list your work history,
+education, your intersts and abilites&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;viral&lt;/strong&gt; - video posted online which becomes popular very quickly&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;to stand out&lt;/strong&gt; - to appear more than others in the same group&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;get your strengths across&lt;/strong&gt; - make your abilities clear to somebody&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;confident&lt;/strong&gt; - self-assure, believe in your own capacity to do things&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;modest&lt;/strong&gt; - humble&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;concise&lt;/strong&gt; - brief, give the information in few words&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;accurate&lt;/strong&gt; - precise&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Define&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;viral&lt;/strong&gt; - &lt;em&gt;lan truyền qua mạng (video, audio, document,...)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;to stand out&lt;/strong&gt; - &lt;em&gt;nổi trội, nổi bật&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;get your strengths across&lt;/strong&gt; &lt;em&gt;tạm dịch là show ra khả năng của mình&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;confident&lt;/strong&gt; - &lt;em&gt;tự tin&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;modest&lt;/strong&gt;, &lt;strong&gt;humble&lt;/strong&gt; - &lt;em&gt;khiêm tốn&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;consice&lt;/strong&gt; - &lt;em&gt;ngắn gọn, súc tích&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;accurate&lt;/strong&gt;, &lt;strong&gt;precise&lt;/strong&gt; - &lt;em&gt;đúng đắn, chính xác&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;evidence&lt;/strong&gt; - &lt;em&gt;hiển nhiên, rõ ràng, rõ rệt&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Oct 2015 10:06:47 +0700</pubDate>
+        <link>https://smilekid1994.github.io/2015/10/20/6m-english-does-your-cv-shine.html</link>
+        <guid isPermaLink="true">https://smilekid1994.github.io/2015/10/20/6m-english-does-your-cv-shine.html</guid>
+        
+        <category>6m english</category>
+        
+        <category>personal</category>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Chọn Blog Platform</title>
+        <description>&lt;p&gt;Định kiếm một cái blog mà ngó qua thấy cả mớ. Dạo này đang thích
+markdown nên đành tìm một cái theo tiêu chí:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Đơn giản&lt;/li&gt;
+&lt;li&gt;Có thể viết (quản lý thì tốt) từ terminal&lt;/li&gt;
+&lt;li&gt;Chạy được trên một số hosting miễn phí&lt;/li&gt;
+&lt;li&gt;Hỗ trợ markdown&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tìm qua thì thấy có vài cái:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;octopress&lt;/li&gt;
+&lt;li&gt;logdown&lt;/li&gt;
+&lt;li&gt;calepin&lt;/li&gt;
+&lt;li&gt;wordpress (thằng này thì cái éo gì cũng hỗ trợ :|)&lt;/li&gt;
+&lt;li&gt;blogger&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lúc đầu bỏ qua octopress vì thấy nó chỉ là platform (ko có host), bỏ qua
+luôn wordpress, blogger vì thấy nó phức tạp vl, chưa kể là thỉnh thoảng
+còn bị chặn..&lt;/p&gt;
+
+&lt;h2&gt;&lt;a href=&quot;http://calepin.co/&quot;&gt;calepin&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Khá hứng thú với thằng này vì lấy nội dung từ markdown files, chưa kể
+còn hỗ trợ lấy từ dropbox.
+Ngắm nghía, tạo tài khoản một hồi, sau vào twitter:
+https://twitter.com/calepinapp thì thấy chẳng active gì mấy. Chán lại đi
+tìm tiếp, chưa cả kịp test ^^.&lt;/p&gt;
+
+&lt;h2&gt;&lt;a href=&quot;http://logdown.com&quot;&gt;logdown&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Trang chủ chuyên nghiệp, tính năng ngon. Back-end ngon, hỗ trợ markdown,
+cho download backup về. Mỗi tội thấy chữ price hơi nản.
+Tuy nhiên vẫn đăng ký 1 tài khoàn free. Tài khoản này chỉ cho phép 1
+static post (chắc là 1 post ở homepage), không cho custom domain. Tìm
+hiểu thêm thì thấy bạn này lại là hàng Tàu. Bản thân anh không cầu kì gì
+nhưng không thích gò bó, tạm bỏ qua đã.&lt;/p&gt;
+
+&lt;h2&gt;&lt;a href=&quot;https://github.com/octopress/octopress&quot;&gt;octopress&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;jekyll&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Quay lại đọc kĩ bạn octopress này thì lại thấy phù hợp với các yêu cầu của mình.
+Hóa ra nó là framework nhưng là viết cho jekyll, chính là cái mình đang
+tìm và nó được dùng cho các trang của github.io.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Đơn giản, không có database&lt;/li&gt;
+&lt;li&gt;Nội dung được viết bằng markup language (hỗ trợ markdown)&lt;/li&gt;
+&lt;li&gt;Lưu trữ trên github (mình thích cái này), s3, rsync (chưa test chắc
+đẩy lên web server bình thường)&lt;/li&gt;
+&lt;li&gt;Hỗ trợ các tính năng của blog: categories, pages, comment, theme các kiểu&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Kiểu hoạt động của nó là thế này: Thằng jekyll là thằng base, thằng
+octopress là thằng làm cho jekyll dễ sử dụng hơn. Nội dung của blog sẽ
+được viết bằng markdown, textile hoặc html, sau đó jekyll sẽ build toàn
+bộ thành html để tạo thành website.&lt;/p&gt;
+
+&lt;p&gt;Kiểu build thành html này load trang thì nhanh vđ.&lt;/p&gt;
+
+&lt;p&gt;Trang web sau khi build sẽ được push lên master branch của github.io,
+còn nội dung chưa build sẽ được push lên source branch.&lt;/p&gt;
+
+&lt;p&gt;OK. Giờ tất cả những gì chúng ta cần là:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;vim&lt;/li&gt;
+&lt;li&gt;git client&lt;/li&gt;
+&lt;li&gt;github account&lt;/li&gt;
+&lt;li&gt;octopress and jekyll gems&lt;/li&gt;
+&lt;li&gt;thêm cái browser để ngắm nữa&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Triển thôi&lt;/h3&gt;
+
+&lt;p&gt;Cài đặt&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo -H gem install octopress
+octopress new /path/to/blog_folder
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog_folder
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Tạo mới 1 post&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;octopress new post &lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt; --slug &lt;span class=&quot;s2&quot;&gt;&quot;day-la-slug&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lệnh trên sẽ tạo 1 file &lt;code&gt;_posts/yyyy-mm-dd-day-la-slug.markdown&lt;/code&gt;. Bây
+giờ chỉ việc mở file này và viết 1 post bằng markdown.
+Quá đơn giản.&lt;/p&gt;
+
+&lt;p&gt;Preview blog in localhost&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;jekyll build
+jekyll server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Một web server đơn giản sẽ được tạo ra tại &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;http://127.0.0.1:4000&lt;/a&gt; để view blog. Nếu không muốn
+publish thì có thể dừng ở đây. Làm một cái local diary :D&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;publish&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Việc đầu tiên là tạo một chỗ để chứa nó trên internet cái đã. Như đã nói
+ở trên thì thằng này hỗ trợ github, s3, rsync (vcđ). Chọn github cho nó
+đơn giản.&lt;/p&gt;
+
+&lt;p&gt;Tạo một project với tên là: username.github.io. Sẽ được một cái git repo
+kiểu: &lt;a href=&quot;https://github.com/smilekid1994/smilekid1994.github.io&quot;&gt;https://github.com/smilekid1994/smilekid1994.github.io&lt;/a&gt;. Repo này
+sẽ chứa cả source (markdown post) và website luôn (sau khi build bằng
+jekyll)&lt;/p&gt;
+
+&lt;p&gt;Giờ tới việc link local blog với github repo đã tạo ở trên.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog-folder
+git init
+octopress deploy init git https://github.com/smilekid1994/smilekid1994.github.io
+git remote add origin https://github.com/smilekid1994/smilekid1994.github.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;file &lt;code&gt;_deploy.yml&lt;/code&gt; sẽ được tạo ra, giữ luôn giá trị mặc định cho nó đẹp
+:D. Add file này vào &lt;code&gt;.gitignore&lt;/code&gt; cho nó lành.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_deploy.yml&quot;&lt;/span&gt; &amp;gt;&amp;gt; .gitignore
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Thử deploy local blog lên github&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# build lại phát cho chắc ăn&lt;/span&gt;
+jekyll build
+git add .
+&lt;span class=&quot;c&quot;&gt;# check lại các thư mục vì lệnh trên sẽ đưa tất cả vào repo&lt;/span&gt;
+git status
+git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;init blog&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# deploy&lt;/span&gt;
+octopress deploy
+
+&lt;span class=&quot;c&quot;&gt;# nếu chưa có branch source thì sẽ được cảnh báo và tạo manual&lt;/span&gt;
+git checkout -b &lt;span class=&quot;nb&quot;&gt;source
+&lt;/span&gt;git push origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# thử deploy lại&lt;/span&gt;
+octopress deploy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Nếu mọi thứ bình thường thì sẽ view được qua url
+&lt;a href=&quot;http://username.github.io&quot;&gt;http://username.github.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Giờ ngồi chỉnh lại mấy cái &lt;code&gt;about.md&lt;/code&gt;, &lt;code&gt;_config.yml&lt;/code&gt; sửa mấy cái mặc định
+là thành một cái blog rồi.&lt;/p&gt;
+
+&lt;h2&gt;Kết&lt;/h2&gt;
+
+&lt;p&gt;Cái này dùng liquid template nên có thể tùy chỉnh rất nhiều thứ. Chắc là
+sẽ có một bài sử dụng chi tiết đi sâu vào việc viết blog và template,
+cái này chỉ là cài đặt. Mà đm, nói wordpress phức tạp chắc nhiều người
+thấy cái này cũng phức tạp vl =)).&lt;/p&gt;
+
+&lt;p&gt;Cơ mà mình thấy rất đơn giản và happy ^^&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Oct 2015 15:13:12 +0700</pubDate>
+        <link>https://smilekid1994.github.io/2015/10/12/chon-blog-platform.html</link>
+        <guid isPermaLink="true">https://smilekid1994.github.io/2015/10/12/chon-blog-platform.html</guid>
+        
+        <category>personal</category>
+        
+        <category>log</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
