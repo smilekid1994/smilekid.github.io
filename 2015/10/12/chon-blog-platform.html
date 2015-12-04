@@ -145,7 +145,7 @@ octopress new /path/to/blog_folder
 <span class="nb">cd </span>blog_folder
 </code></pre></div>
 <p>Tạo mới 1 post</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">octopress new post <span class="s2">"title"</span> --slug <span class="s2">"day-la-slug"</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">octopress new post <span class="s2">&quot;title&quot;</span> --slug <span class="s2">&quot;day-la-slug&quot;</span>
 </code></pre></div>
 <p>Lệnh trên sẽ tạo 1 file <code>_posts/yyyy-mm-dd-day-la-slug.markdown</code>. Bây
 giờ chỉ việc mở file này và viết 1 post bằng markdown.
@@ -177,7 +177,7 @@ git remote add origin https://github.com/smilekid1994/smilekid1994.github.io
 </code></pre></div>
 <p>file <code>_deploy.yml</code> sẽ được tạo ra, giữ luôn giá trị mặc định cho nó đẹp
 :D. Add file này vào <code>.gitignore</code> cho nó lành.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">"_deploy.yml"</span> &gt;&gt; .gitignore
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&quot;_deploy.yml&quot;</span> &gt;&gt; .gitignore
 </code></pre></div>
 <p>Thử deploy local blog lên github</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># build lại phát cho chắc ăn</span>
@@ -185,14 +185,14 @@ jekyll build
 git add .
 <span class="c"># check lại các thư mục vì lệnh trên sẽ đưa tất cả vào repo</span>
 git status
-git commit -m <span class="s2">"init blog"</span>
+git commit -m <span class="s2">&quot;init blog&quot;</span>
 
 <span class="c"># deploy</span>
 octopress deploy
 
 <span class="c"># nếu chưa có branch source thì sẽ được cảnh báo và tạo manual</span>
-git checkout -b <span class="nb">source
-</span>git push origin <span class="nb">source</span>
+git checkout -b <span class="nb">source</span>
+git push origin <span class="nb">source</span>
 
 <span class="c"># thử deploy lại</span>
 octopress deploy

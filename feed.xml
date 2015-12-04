@@ -6,9 +6,9 @@
 </description>
     <link>https://smilekid1994.github.io/</link>
     <atom:link href="https://smilekid1994.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Dec 2015 14:11:43 +0700</pubDate>
-    <lastBuildDate>Thu, 03 Dec 2015 14:11:43 +0700</lastBuildDate>
-    <generator>Jekyll v3.0.0</generator>
+    <pubDate>Fri, 04 Dec 2015 19:15:41 +0700</pubDate>
+    <lastBuildDate>Fri, 04 Dec 2015 19:15:41 +0700</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Sử Lỗi Uuid Khi Build Trong Mac Port</title>
@@ -16,26 +16,26 @@
 dở hơi, cũng mất tí thời gian nên note lại ai chẳng may gặp thì fix.&lt;/p&gt;
 
 &lt;p&gt;Nâng cấp toàn bộ packages&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo port upgrade outdated
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo port upgrade outdated
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Gặp lỗi khi build&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;error: unknown type name &#39;uuid_string_t&#39;; did you mean &#39;io_string_t mac
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;error: unknown type name &amp;#39;uuid_string_t&amp;#39;; did you mean &amp;#39;io_string_t mac
 port
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Tìm loanh quanh thì phát hiện ra là nó đã sử dụng file header sai của
 thư viện uuid &lt;code&gt;/usr/local/include/uuid/uuid.h&lt;/code&gt;. Bình thường mac port
 không khuyến khích anh em cài các thư viện hoặc tools vào &lt;code&gt;/usr/local/&lt;/code&gt;
 vì có thể gặp conflict. Cơ mà chẳng may rồi thì tạm thời bỏ đi vậy.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo mv /usr/local/include/uuid/uuid.h{,.bak}
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo mv /usr/local/include/uuid/uuid.h{,.bak}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Chờ nâng cấp xong lại move về như cũ hoặc cứ để đấy, chạy cái gì thấy
 lỗi thì move sau.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo mv /usr/local/include/uuid/uuid.h{.bak,}
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo mv /usr/local/include/uuid/uuid.h{.bak,}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Các trường hợp conflict khác cũng có thể xử lý tương tự, việc đầu tiên
 là cần tìm header mà nó sử dụng. Sau đó quét toàn bộ hệ thống xem có
 những file nào. Thử đổi tên lần lượt và check lại.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;find / -name &quot;uuid.h&quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;find / -name &amp;quot;uuid.h&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Wed, 02 Dec 2015 16:10:28 +0700</pubDate>
         <link>https://smilekid1994.github.io/2015/12/02/sua-loi-uuid-khi-build-trong-mac-port.html</link>
@@ -64,7 +64,7 @@ nên thay đổi và bổ sung một vài thứ thay vì giữ mọi thứ mặc
 &lt;code&gt;--with-pam&lt;/code&gt; có thể sau này sẽ cần dùng.&lt;/p&gt;
 
 &lt;h2&gt;Đổi port&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Port 2222
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Port 2222
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Nhiều người cho rằng việc này không cần thiết nhưng sau một thời gian
 dài làm việc với server, mình thấy nên đổi. Có một số trường hợp do bất
@@ -72,15 +72,15 @@ cẩn chưa setup firewall, dùng weak password nên đã bị chiếm quyền. 
 khả năng xảy ra là nhỏ nhưng với một admin thì vẫn nên cẩn thận.&lt;/p&gt;
 
 &lt;h2&gt;Đổi host nếu cần thiết&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ListenAddress 0.0.0.0
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ListenAddress 0.0.0.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Mặc định thì sshd sẽ listen trên tất cả các IPs của server (wan, lan các
 kiểu). Trong một số trường hợp chúng ta chỉ cho phép ssh qua LAN thì
 cũng nên điều chỉnh cho chắc.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ListenAddress 192.168.2.22
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ListenAddress 192.168.2.22
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Vô hiệu hóa tài khoản root&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;PermitRootLogin no
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;PermitRootLogin no
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Sau khi tạo một tài khoản có quyền sudo chúng ta có thể tắt đăng nhập
 qua tài khoản root. Việc này cũng giống như việc đổi port và host, có
@@ -91,7 +91,7 @@ tài khoản thường sang.&lt;/p&gt;
 
 &lt;p&gt;Chỉ định các user có thể đăng nhập vào hệ thống. Nếu dùng cách này thì
 không cẩn vô hiệu tài khoản root, chỉ cần không đưa root vào danh sách.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;AllowUsers user1
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;AllowUsers user1
 AllowUsers user2
 AllowUsers user3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -107,14 +107,14 @@ mình :D.&lt;/p&gt;
 
 &lt;p&gt;Sử dụng keys để đăng nhập thì chúng ta nên bỏ đăng nhập bằng mật khẩu,
 chỉ những ai có key mới đăng nhập được.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;# Disable password authentication forcing use of keys
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# Disable password authentication forcing use of keys
 PasswordAuthentication no
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Sử dụng firewall&lt;/h2&gt;
 
 &lt;p&gt;Để thêm an toàn chúng ta có thể sử dụng iptables để limit ip và limit
 rate.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;iptables -A INPUT -p tcp --dport 2222 -m state --state NEW -m recent --set --name ssh --rsource
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;iptables -A INPUT -p tcp --dport 2222 -m state --state NEW -m recent --set --name ssh --rsource
 iptables -A INPUT -p tcp -m tcp --dport 2222 -m state --state NEW -m recent --update --seconds 60 --hitcount 6 --rttl --name SSH --rsource -j REJECT --reject-with icmp-port-unreachable
 iptables -A INPUT -p tcp -s 192.168.2.2 --dport 2222 -j ACCEPT
 iptables -A INPUT -j DROP
@@ -135,18 +135,18 @@ openssl từ 6.4 (hình như thế, cứ xài bản mới nhất cho chắc ăn)
 &lt;p&gt;Cài luôn từ repo của OS gói &lt;code&gt;google-authenticator&lt;/code&gt; (tên gói có thể khác
 ở các OSs khác nhau).
 Hoặc build từ source&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;https://github.com/google/google-authenticator/tree/master/libpam
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;https://github.com/google/google-authenticator/tree/master/libpam
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Thư viện sẽ được cài đặt tại &lt;code&gt;/lib64/security/pam_google_authenticator.so&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Cấu hình &lt;code&gt;sshd_config&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;ChallengeResponseAuthentication yes
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ChallengeResponseAuthentication yes
 UsePAM yes
 AuthenticationMethods publickey,keyboard-interactive
 PasswordAuthentication no
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Cấu hình PAM &lt;code&gt;/etc/pam.d/sshd&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;auth required pam_google_authenticator.so
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;auth required pam_google_authenticator.so
 ##
 auth       required pam_sepermit.so
 #auth       include      password-auth
@@ -158,7 +158,7 @@ hướng dẫn. Lưu lại mấy cái code backup để phòng khi mưa gió.&lt
 
 &lt;p&gt;Kick hết các users đang đăng nhập vào hệ thống để test thử. Sau khi nhập
 passphrase là yêu cầu nhập verification code.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo /etc/init.d/sshd restart
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo /etc/init.d/sshd restart
 sudo skill -KILL -u user
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Check log thường xuyên&lt;/h2&gt;
@@ -204,16 +204,16 @@ thấy thằng này webpy này có vẻ ổn. Mình chỉ tìm hiểu để làm
 &lt;p&gt;Hello World đây:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;web&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Hello World&#39;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Hello World&amp;#39;&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Cài đặt&lt;/p&gt;
@@ -228,19 +228,19 @@ curl http:/127.0.0.1:8080
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;urls&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Chỉ định các đường url của web. Như ở Hello World phía trên, thằng này chỉ phục vụ 1 url là &lt;code&gt;/&lt;/code&gt; (http://127.0.0.1:8080/). Và khi truy cập vào url &lt;code&gt;/&lt;/code&gt;, class được chỉ định để xử lý và hiển thị kết quả là &lt;code&gt;hello&lt;/code&gt;. Cứ như thế url và class đi với nhau thành 1 cặp và tất cả những urls khác mẫu được khai báo đều 404. Ví dụ tạo trang about:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/about&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/about/me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/about&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;about&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/about/me&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;about&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Smile&#39;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Smile&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;truy cập vào &lt;code&gt;about&lt;/code&gt; và &lt;code&gt;about/me&lt;/code&gt; cho kết quả như nhau.&lt;/p&gt;
 
@@ -249,7 +249,7 @@ curl http:/127.0.0.1:8080
 &lt;p&gt;urls thì có vẻ dễ rồi, đến phần xử lý và trả về kết quả. Cũng dễ cmn nốt, tạo class và trả về thôi&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Smile&#39;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Smile&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;hiển thị &lt;code&gt;Smile&lt;/code&gt; khi vào các urls được khai báo tương ứng với class &lt;code&gt;about&lt;/code&gt;&lt;/p&gt;
 
@@ -257,9 +257,9 @@ curl http:/127.0.0.1:8080
 
 &lt;p&gt;Với những static web kiểu blog thì như trên là đủ, nhưng với web api thì còn một vấn đề chúng ta quan tâm là tham số của GET/POST. Dạng thế này &lt;code&gt;/about?name=smile&lt;/code&gt;. Hoàn toàn có thể dùng cách truyền thống để lấy các tham số này (biến môi trường của web server) nhưng webpy cũng có cách của nó. GET trước cho nó dễ, đầu tiên khai báo ở url:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/about/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/view/(.*)/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;view&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/about/(.*)&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;about&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/view/(.*)/(.*)&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;view&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;(.*)&lt;/code&gt; thể hiện url &lt;code&gt;/about&lt;/code&gt; có 1 tham số cho GET&lt;/p&gt;
@@ -269,11 +269,11 @@ curl http:/127.0.0.1:8080
 &lt;p&gt;Giờ bắt các tham số này trong class để xử lý thôi&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;It&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;It&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;It&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; of &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cate&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;It&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39; of &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cate&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Test&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl http://127.0.0.1:8080/about/smile
@@ -281,36 +281,36 @@ curl http://127.0.0.1:8080/view/page1/cate1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Theo cách truyền thống (dùng luôn cả POST và GET) thì url không được đẹp lắm với GET.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;hello&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/about/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;about&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;/view/(.*)/(.*)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;view&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&#39;api&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;api&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/about/(.*)&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;about&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;/view/(.*)/(.*)&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;view&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;#39;api&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;api&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;not found&quot;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;not found&amp;quot;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
 
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;not found&quot;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;not found&amp;quot;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Hiển thị giá trị của &lt;code&gt;name&lt;/code&gt; được truyền qua GET/POST.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl http://127.0.0.1:8080/api?name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;smile
-curl http://127.0.0.1:8080/api -d &lt;span class=&quot;s2&quot;&gt;&quot;name=smile&quot;&lt;/span&gt;
+curl http://127.0.0.1:8080/api -d &lt;span class=&quot;s2&quot;&gt;&amp;quot;name=smile&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;web.input()&lt;/code&gt; là storage object &lt;code&gt;&amp;lt;Storage {&amp;#39;name&amp;#39;: u&amp;#39;smile&amp;#39;}&amp;gt;%&lt;/code&gt; chứa thông tin các tham số truyền lên, để debug có thể print tất cả các tham số &lt;code&gt;return web.input()&lt;/code&gt;. Không cần biết chúng ta gửi thông tin lên bằng đường nào, tất cả được thu thập và cho vào object này để chúng ta có thể dễ dàng truy cập qua tên biến &lt;code&gt;web.input().name&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Ngoài ra chúng ta cũng có thể lấy body data được truyền lên qua
 &lt;code&gt;web.ctx.data&lt;/code&gt; sau khi gọi &lt;code&gt;web.input()&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
@@ -393,7 +393,7 @@ lấy về các lệnh cấu hình.&lt;/p&gt;
 &lt;p&gt;Sửa hoặc tạo &lt;code&gt;/etc/ansible/hosts&lt;/code&gt; để thêm các remote servers. Sau đó
 thêm public key lên những server này, thường là thêm vào
 &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt;. Ví dụ về file hosts:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;192.168.1.50
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;192.168.1.50
 aserver.example.org
 bserver.example.org
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -407,14 +407,14 @@ bserver.example.org
 
 &lt;p&gt;Chúng ta sẽ giả sử là đang sử dụng SSH keys để xác thực. Cấu hình SSH
 agent để đỡ phải nhập password liên tục bằng cách:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ssh-agent bash
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ssh-add ~/.ssh/id_rsa
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh-agent bash
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh-add ~/.ssh/id_rsa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;(Phụ thuộc vào cài đặt của bạn, có thể sử dụng tùy chọn &lt;code&gt;--private-key&lt;/code&gt; để
 sử dụng pem file)&lt;/p&gt;
 
 &lt;p&gt;Bây giờ thử ping tất cả các nodes:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ansible all -m ping
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Ansible sẽ thử kết nối tới các remote servers sử dụng user name hiện
 tại, tương tự với SSH. Để kết nối với user name khác, sử dụng tham số
@@ -423,23 +423,23 @@ tại, tương tự với SSH. Để kết nối với user name khác, sử d�
 &lt;p&gt;Nếu bạn muốn truy cập chế độ sudo, có vài tùy chọn để thao tác với việc
 này:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# as bruce&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce
 &lt;span class=&quot;c&quot;&gt;# as bruce sudo to root&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce --sudo
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce --sudo
 &lt;span class=&quot;c&quot;&gt;# as bruce, sudoing to batman&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce --sudo --sudo-user batman
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce --sudo --sudo-user batman
 
 &lt;span class=&quot;c&quot;&gt;# Từ phiên bản mới nhất, `sudo` được thay thế bằng `become`&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# as bruce, sudoing to root&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce -b
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce -b
 &lt;span class=&quot;c&quot;&gt;# as bruce, sudoing to batman&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce -b --become-user batman
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ansible all -m ping -u bruce -b --become-user batman
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;(Cách thao tác với sudo có thể thay đổi được trong file cấu hình của
 Ansible.  Những tham số đi kèm sudo (ví dụ -H) cũng có thể điều chỉnh.)&lt;/p&gt;
 
 &lt;p&gt;Bây giờ thử chạy một lệnh trên tất cả server:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ansible all -a &lt;span class=&quot;s2&quot;&gt;&quot;/bin/echo hello&quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ansible all -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;/bin/echo hello&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Ó sầm. Bạn vừa liên lạc với các nodes bằng Ansible. Trong thời gian ngắn
 tới, chúng ta sẽ: đọc về một vài trường hợp thực tế trong &lt;a href=&quot;http://docs.ansible.com/ansible/intro_adhoc.html&quot;&gt;Giới thiệu
@@ -461,11 +461,11 @@ cron hoặc at.&lt;/p&gt;
 
 &lt;p&gt;Nếu bạn đã biết và muốn bỏ qua hành vi này, bạn có thể làm bằng cách
 chỉnh sửa trong &lt;code&gt;/etc/ansible/ansible.cfg&lt;/code&gt; hoặc &lt;code&gt;~/.ansible.cfg&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;[defauts]
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[defauts]
 host_key_checking = False
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Hoặc có thể điều chỉnh qua biến môi trường:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANSIBLE_HOST_KEY_CHECKING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;False
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANSIBLE_HOST_KEY_CHECKING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;False
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Lưu ý rằng kiểm tra host key ở chế độ paramiko khá chậm, vị vậy nếu sử
 dụng tính năng này, nên chuyển sang dùng ssh.&lt;/p&gt;
@@ -766,7 +766,7 @@ octopress new /path/to/blog_folder
 &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog_folder
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Tạo mới 1 post&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;octopress new post &lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt; --slug &lt;span class=&quot;s2&quot;&gt;&quot;day-la-slug&quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;octopress new post &lt;span class=&quot;s2&quot;&gt;&amp;quot;title&amp;quot;&lt;/span&gt; --slug &lt;span class=&quot;s2&quot;&gt;&amp;quot;day-la-slug&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Lệnh trên sẽ tạo 1 file &lt;code&gt;_posts/yyyy-mm-dd-day-la-slug.markdown&lt;/code&gt;. Bây
 giờ chỉ việc mở file này và viết 1 post bằng markdown.
@@ -798,7 +798,7 @@ git remote add origin https://github.com/smilekid1994/smilekid1994.github.io
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;file &lt;code&gt;_deploy.yml&lt;/code&gt; sẽ được tạo ra, giữ luôn giá trị mặc định cho nó đẹp
 :D. Add file này vào &lt;code&gt;.gitignore&lt;/code&gt; cho nó lành.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_deploy.yml&quot;&lt;/span&gt; &amp;gt;&amp;gt; .gitignore
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;_deploy.yml&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; .gitignore
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Thử deploy local blog lên github&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# build lại phát cho chắc ăn&lt;/span&gt;
@@ -806,14 +806,14 @@ jekyll build
 git add .
 &lt;span class=&quot;c&quot;&gt;# check lại các thư mục vì lệnh trên sẽ đưa tất cả vào repo&lt;/span&gt;
 git status
-git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;init blog&quot;&lt;/span&gt;
+git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;init blog&amp;quot;&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# deploy&lt;/span&gt;
 octopress deploy
 
 &lt;span class=&quot;c&quot;&gt;# nếu chưa có branch source thì sẽ được cảnh báo và tạo manual&lt;/span&gt;
-git checkout -b &lt;span class=&quot;nb&quot;&gt;source
-&lt;/span&gt;git push origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;
+git checkout -b &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;
+git push origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# thử deploy lại&lt;/span&gt;
 octopress deploy

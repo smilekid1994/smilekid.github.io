@@ -76,7 +76,7 @@ nên thay đổi và bổ sung một vài thứ thay vì giữ mọi thứ mặc
 <code>--with-pam</code> có thể sau này sẽ cần dùng.</p>
 
 <h2>Đổi port</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">Port 2222
+<div class="highlight"><pre><code class="language-text" data-lang="text">Port 2222
 </code></pre></div>
 <p>Nhiều người cho rằng việc này không cần thiết nhưng sau một thời gian
 dài làm việc với server, mình thấy nên đổi. Có một số trường hợp do bất
@@ -84,15 +84,15 @@ cẩn chưa setup firewall, dùng weak password nên đã bị chiếm quyền. 
 khả năng xảy ra là nhỏ nhưng với một admin thì vẫn nên cẩn thận.</p>
 
 <h2>Đổi host nếu cần thiết</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">ListenAddress 0.0.0.0
+<div class="highlight"><pre><code class="language-text" data-lang="text">ListenAddress 0.0.0.0
 </code></pre></div>
 <p>Mặc định thì sshd sẽ listen trên tất cả các IPs của server (wan, lan các
 kiểu). Trong một số trường hợp chúng ta chỉ cho phép ssh qua LAN thì
 cũng nên điều chỉnh cho chắc.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">ListenAddress 192.168.2.22
+<div class="highlight"><pre><code class="language-text" data-lang="text">ListenAddress 192.168.2.22
 </code></pre></div>
 <h2>Vô hiệu hóa tài khoản root</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">PermitRootLogin no
+<div class="highlight"><pre><code class="language-text" data-lang="text">PermitRootLogin no
 </code></pre></div>
 <p>Sau khi tạo một tài khoản có quyền sudo chúng ta có thể tắt đăng nhập
 qua tài khoản root. Việc này cũng giống như việc đổi port và host, có
@@ -103,7 +103,7 @@ tài khoản thường sang.</p>
 
 <p>Chỉ định các user có thể đăng nhập vào hệ thống. Nếu dùng cách này thì
 không cẩn vô hiệu tài khoản root, chỉ cần không đưa root vào danh sách.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">AllowUsers user1
+<div class="highlight"><pre><code class="language-text" data-lang="text">AllowUsers user1
 AllowUsers user2
 AllowUsers user3
 </code></pre></div>
@@ -119,14 +119,14 @@ mình :D.</p>
 
 <p>Sử dụng keys để đăng nhập thì chúng ta nên bỏ đăng nhập bằng mật khẩu,
 chỉ những ai có key mới đăng nhập được.</p>
-<div class="highlight"><pre><code class="language-" data-lang=""># Disable password authentication forcing use of keys
+<div class="highlight"><pre><code class="language-text" data-lang="text"># Disable password authentication forcing use of keys
 PasswordAuthentication no
 </code></pre></div>
 <h2>Sử dụng firewall</h2>
 
 <p>Để thêm an toàn chúng ta có thể sử dụng iptables để limit ip và limit
 rate.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">iptables -A INPUT -p tcp --dport 2222 -m state --state NEW -m recent --set --name ssh --rsource
+<div class="highlight"><pre><code class="language-text" data-lang="text">iptables -A INPUT -p tcp --dport 2222 -m state --state NEW -m recent --set --name ssh --rsource
 iptables -A INPUT -p tcp -m tcp --dport 2222 -m state --state NEW -m recent --update --seconds 60 --hitcount 6 --rttl --name SSH --rsource -j REJECT --reject-with icmp-port-unreachable
 iptables -A INPUT -p tcp -s 192.168.2.2 --dport 2222 -j ACCEPT
 iptables -A INPUT -j DROP
@@ -147,18 +147,18 @@ openssl từ 6.4 (hình như thế, cứ xài bản mới nhất cho chắc ăn)
 <p>Cài luôn từ repo của OS gói <code>google-authenticator</code> (tên gói có thể khác
 ở các OSs khác nhau).
 Hoặc build từ source</p>
-<div class="highlight"><pre><code class="language-" data-lang="">https://github.com/google/google-authenticator/tree/master/libpam
+<div class="highlight"><pre><code class="language-text" data-lang="text">https://github.com/google/google-authenticator/tree/master/libpam
 </code></pre></div>
 <p>Thư viện sẽ được cài đặt tại <code>/lib64/security/pam_google_authenticator.so</code></p>
 
 <p>Cấu hình <code>sshd_config</code></p>
-<div class="highlight"><pre><code class="language-" data-lang="">ChallengeResponseAuthentication yes
+<div class="highlight"><pre><code class="language-text" data-lang="text">ChallengeResponseAuthentication yes
 UsePAM yes
 AuthenticationMethods publickey,keyboard-interactive
 PasswordAuthentication no
 </code></pre></div>
 <p>Cấu hình PAM <code>/etc/pam.d/sshd</code></p>
-<div class="highlight"><pre><code class="language-" data-lang="">auth required pam_google_authenticator.so
+<div class="highlight"><pre><code class="language-text" data-lang="text">auth required pam_google_authenticator.so
 ##
 auth       required pam_sepermit.so
 #auth       include      password-auth
@@ -170,7 +170,7 @@ hướng dẫn. Lưu lại mấy cái code backup để phòng khi mưa gió.</p
 
 <p>Kick hết các users đang đăng nhập vào hệ thống để test thử. Sau khi nhập
 passphrase là yêu cầu nhập verification code.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">sudo /etc/init.d/sshd restart
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo /etc/init.d/sshd restart
 sudo skill -KILL -u user
 </code></pre></div>
 <h2>Check log thường xuyên</h2>

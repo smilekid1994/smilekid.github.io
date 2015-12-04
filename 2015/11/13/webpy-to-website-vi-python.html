@@ -68,16 +68,16 @@ thấy thằng này webpy này có vẻ ổn. Mình chỉ tìm hiểu để làm
 <p>Hello World đây:</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">web</span>
 <span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span>
+    <span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;hello&#39;</span>
 <span class="p">)</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">application</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="nb">globals</span><span class="p">())</span>
 
 <span class="k">class</span> <span class="nc">hello</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">'Hello World'</span>
+        <span class="k">return</span> <span class="s">&#39;Hello World&#39;</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 <p>Cài đặt</p>
@@ -92,19 +92,19 @@ curl http:/127.0.0.1:8080
 </code></pre></div>
 <h2>urls</h2>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span>
+  <span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;hello&#39;</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>Chỉ định các đường url của web. Như ở Hello World phía trên, thằng này chỉ phục vụ 1 url là <code>/</code> (http://127.0.0.1:8080/). Và khi truy cập vào url <code>/</code>, class được chỉ định để xử lý và hiển thị kết quả là <code>hello</code>. Cứ như thế url và class đi với nhau thành 1 cặp và tất cả những urls khác mẫu được khai báo đều 404. Ví dụ tạo trang about:</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span><span class="p">,</span>
-  <span class="s">'/about'</span><span class="p">,</span> <span class="s">'about'</span><span class="p">,</span>
-  <span class="s">'/about/me'</span><span class="p">,</span> <span class="s">'about'</span>
+  <span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;hello&#39;</span><span class="p">,</span>
+  <span class="s">&#39;/about&#39;</span><span class="p">,</span> <span class="s">&#39;about&#39;</span><span class="p">,</span>
+  <span class="s">&#39;/about/me&#39;</span><span class="p">,</span> <span class="s">&#39;about&#39;</span>
 <span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">about</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">'Smile'</span>
+        <span class="k">return</span> <span class="s">&#39;Smile&#39;</span>
 </code></pre></div>
 <p>truy cập vào <code>about</code> và <code>about/me</code> cho kết quả như nhau.</p>
 
@@ -113,7 +113,7 @@ curl http:/127.0.0.1:8080
 <p>urls thì có vẻ dễ rồi, đến phần xử lý và trả về kết quả. Cũng dễ cmn nốt, tạo class và trả về thôi</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">about</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">'Smile'</span>
+        <span class="k">return</span> <span class="s">&#39;Smile&#39;</span>
 </code></pre></div>
 <p>hiển thị <code>Smile</code> khi vào các urls được khai báo tương ứng với class <code>about</code></p>
 
@@ -121,9 +121,9 @@ curl http:/127.0.0.1:8080
 
 <p>Với những static web kiểu blog thì như trên là đủ, nhưng với web api thì còn một vấn đề chúng ta quan tâm là tham số của GET/POST. Dạng thế này <code>/about?name=smile</code>. Hoàn toàn có thể dùng cách truyền thống để lấy các tham số này (biến môi trường của web server) nhưng webpy cũng có cách của nó. GET trước cho nó dễ, đầu tiên khai báo ở url:</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span><span class="p">,</span>
-  <span class="s">'/about/(.*)'</span><span class="p">,</span> <span class="s">'about'</span>
-  <span class="s">'/view/(.*)/(.*)'</span><span class="p">,</span> <span class="s">'view'</span>
+  <span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;hello&#39;</span><span class="p">,</span>
+  <span class="s">&#39;/about/(.*)&#39;</span><span class="p">,</span> <span class="s">&#39;about&#39;</span>
+  <span class="s">&#39;/view/(.*)/(.*)&#39;</span><span class="p">,</span> <span class="s">&#39;view&#39;</span>
 <span class="p">)</span>
 </code></pre></div>
 <p><code>(.*)</code> thể hiện url <code>/about</code> có 1 tham số cho GET</p>
@@ -133,11 +133,11 @@ curl http:/127.0.0.1:8080
 <p>Giờ bắt các tham số này trong class để xử lý thôi</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">about</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">'It</span><span class="se">\'</span><span class="s">s '</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="k">return</span> <span class="s">&#39;It</span><span class="se">\&#39;</span><span class="s">s &#39;</span> <span class="o">+</span> <span class="n">name</span>
 
 <span class="k">class</span> <span class="nc">view</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">cate</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">'It</span><span class="se">\'</span><span class="s">s '</span> <span class="o">+</span> <span class="n">page</span> <span class="o">+</span> <span class="s">' of '</span> <span class="o">+</span> <span class="n">cate</span>
+        <span class="k">return</span> <span class="s">&#39;It</span><span class="se">\&#39;</span><span class="s">s &#39;</span> <span class="o">+</span> <span class="n">page</span> <span class="o">+</span> <span class="s">&#39; of &#39;</span> <span class="o">+</span> <span class="n">cate</span>
 </code></pre></div>
 <p>Test</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://127.0.0.1:8080/about/smile
@@ -145,36 +145,36 @@ curl http://127.0.0.1:8080/view/page1/cate1
 </code></pre></div>
 <p>Theo cách truyền thống (dùng luôn cả POST và GET) thì url không được đẹp lắm với GET.</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">urls</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="s">'/'</span><span class="p">,</span> <span class="s">'hello'</span><span class="p">,</span>
-  <span class="s">'/about/(.*)'</span><span class="p">,</span> <span class="s">'about'</span><span class="p">,</span>
-  <span class="s">'/view/(.*)/(.*)'</span><span class="p">,</span> <span class="s">'view'</span><span class="p">,</span>
-  <span class="s">'api'</span><span class="p">,</span> <span class="s">'api'</span>
+  <span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;hello&#39;</span><span class="p">,</span>
+  <span class="s">&#39;/about/(.*)&#39;</span><span class="p">,</span> <span class="s">&#39;about&#39;</span><span class="p">,</span>
+  <span class="s">&#39;/view/(.*)/(.*)&#39;</span><span class="p">,</span> <span class="s">&#39;view&#39;</span><span class="p">,</span>
+  <span class="s">&#39;api&#39;</span><span class="p">,</span> <span class="s">&#39;api&#39;</span>
 <span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">api</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">POST</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">"not found"</span>
+            <span class="k">return</span> <span class="s">&quot;not found&quot;</span>
         <span class="k">return</span> <span class="n">data</span>
 
     <span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">"not found"</span>
+            <span class="k">return</span> <span class="s">&quot;not found&quot;</span>
         <span class="k">return</span> <span class="n">data</span>
 </code></pre></div>
 <p>Hiển thị giá trị của <code>name</code> được truyền qua GET/POST.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://127.0.0.1:8080/api?name<span class="o">=</span>smile
-curl http://127.0.0.1:8080/api -d <span class="s2">"name=smile"</span>
+curl http://127.0.0.1:8080/api -d <span class="s2">&quot;name=smile&quot;</span>
 </code></pre></div>
 <p><code>web.input()</code> là storage object <code>&lt;Storage {&#39;name&#39;: u&#39;smile&#39;}&gt;%</code> chứa thông tin các tham số truyền lên, để debug có thể print tất cả các tham số <code>return web.input()</code>. Không cần biết chúng ta gửi thông tin lên bằng đường nào, tất cả được thu thập và cho vào object này để chúng ta có thể dễ dàng truy cập qua tên biến <code>web.input().name</code></p>
 
 <p>Ngoài ra chúng ta cũng có thể lấy body data được truyền lên qua
 <code>web.ctx.data</code> sau khi gọi <code>web.input()</code>.</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">web</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">web</span><span class="o">.</span><span class="n">input</span><span class="p">()</span>
 <span class="k">print</span> <span class="n">web</span><span class="o">.</span><span class="n">ctx</span>
 <span class="k">print</span> <span class="n">web</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="n">data</span>
 </code></pre></div>

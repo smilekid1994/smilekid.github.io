@@ -66,26 +66,26 @@
 dở hơi, cũng mất tí thời gian nên note lại ai chẳng may gặp thì fix.</p>
 
 <p>Nâng cấp toàn bộ packages</p>
-<div class="highlight"><pre><code class="language-" data-lang="">sudo port upgrade outdated
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo port upgrade outdated
 </code></pre></div>
 <p>Gặp lỗi khi build</p>
-<div class="highlight"><pre><code class="language-" data-lang="">error: unknown type name 'uuid_string_t'; did you mean 'io_string_t mac
+<div class="highlight"><pre><code class="language-text" data-lang="text">error: unknown type name &#39;uuid_string_t&#39;; did you mean &#39;io_string_t mac
 port
 </code></pre></div>
 <p>Tìm loanh quanh thì phát hiện ra là nó đã sử dụng file header sai của
 thư viện uuid <code>/usr/local/include/uuid/uuid.h</code>. Bình thường mac port
 không khuyến khích anh em cài các thư viện hoặc tools vào <code>/usr/local/</code>
 vì có thể gặp conflict. Cơ mà chẳng may rồi thì tạm thời bỏ đi vậy.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">sudo mv /usr/local/include/uuid/uuid.h{,.bak}
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo mv /usr/local/include/uuid/uuid.h{,.bak}
 </code></pre></div>
 <p>Chờ nâng cấp xong lại move về như cũ hoặc cứ để đấy, chạy cái gì thấy
 lỗi thì move sau.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">sudo mv /usr/local/include/uuid/uuid.h{.bak,}
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo mv /usr/local/include/uuid/uuid.h{.bak,}
 </code></pre></div>
 <p>Các trường hợp conflict khác cũng có thể xử lý tương tự, việc đầu tiên
 là cần tìm header mà nó sử dụng. Sau đó quét toàn bộ hệ thống xem có
 những file nào. Thử đổi tên lần lượt và check lại.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">find / -name "uuid.h"
+<div class="highlight"><pre><code class="language-text" data-lang="text">find / -name &quot;uuid.h&quot;
 </code></pre></div>
     
       <div id="disqus_thread"></div>

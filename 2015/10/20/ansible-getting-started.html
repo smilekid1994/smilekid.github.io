@@ -126,7 +126,7 @@ lấy về các lệnh cấu hình.</p>
 <p>Sửa hoặc tạo <code>/etc/ansible/hosts</code> để thêm các remote servers. Sau đó
 thêm public key lên những server này, thường là thêm vào
 <code>~/.ssh/authorized_keys</code>. Ví dụ về file hosts:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">192.168.1.50
+<div class="highlight"><pre><code class="language-text" data-lang="text">192.168.1.50
 aserver.example.org
 bserver.example.org
 </code></pre></div>
@@ -140,14 +140,14 @@ bserver.example.org
 
 <p>Chúng ta sẽ giả sử là đang sử dụng SSH keys để xác thực. Cấu hình SSH
 agent để đỡ phải nhập password liên tục bằng cách:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ssh-agent bash
-<span class="gp">$ </span>ssh-add ~/.ssh/id_rsa
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ssh-agent bash
+<span class="nv">$ </span>ssh-add ~/.ssh/id_rsa
 </code></pre></div>
 <p>(Phụ thuộc vào cài đặt của bạn, có thể sử dụng tùy chọn <code>--private-key</code> để
 sử dụng pem file)</p>
 
 <p>Bây giờ thử ping tất cả các nodes:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ansible all -m ping
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ansible all -m ping
 </code></pre></div>
 <p>Ansible sẽ thử kết nối tới các remote servers sử dụng user name hiện
 tại, tương tự với SSH. Để kết nối với user name khác, sử dụng tham số
@@ -156,23 +156,23 @@ tại, tương tự với SSH. Để kết nối với user name khác, sử d�
 <p>Nếu bạn muốn truy cập chế độ sudo, có vài tùy chọn để thao tác với việc
 này:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># as bruce</span>
-<span class="gp">$ </span>ansible all -m ping -u bruce
+<span class="nv">$ </span>ansible all -m ping -u bruce
 <span class="c"># as bruce sudo to root</span>
-<span class="gp">$ </span>ansible all -m ping -u bruce --sudo
+<span class="nv">$ </span>ansible all -m ping -u bruce --sudo
 <span class="c"># as bruce, sudoing to batman</span>
-<span class="gp">$ </span>ansible all -m ping -u bruce --sudo --sudo-user batman
+<span class="nv">$ </span>ansible all -m ping -u bruce --sudo --sudo-user batman
 
 <span class="c"># Từ phiên bản mới nhất, `sudo` được thay thế bằng `become`</span>
 <span class="c"># as bruce, sudoing to root</span>
-<span class="gp">$ </span>ansible all -m ping -u bruce -b
+<span class="nv">$ </span>ansible all -m ping -u bruce -b
 <span class="c"># as bruce, sudoing to batman</span>
-<span class="gp">$ </span>ansible all -m ping -u bruce -b --become-user batman
+<span class="nv">$ </span>ansible all -m ping -u bruce -b --become-user batman
 </code></pre></div>
 <p>(Cách thao tác với sudo có thể thay đổi được trong file cấu hình của
 Ansible.  Những tham số đi kèm sudo (ví dụ -H) cũng có thể điều chỉnh.)</p>
 
 <p>Bây giờ thử chạy một lệnh trên tất cả server:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ansible all -a <span class="s2">"/bin/echo hello"</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ansible all -a <span class="s2">&quot;/bin/echo hello&quot;</span>
 </code></pre></div>
 <p>Ó sầm. Bạn vừa liên lạc với các nodes bằng Ansible. Trong thời gian ngắn
 tới, chúng ta sẽ: đọc về một vài trường hợp thực tế trong <a href="http://docs.ansible.com/ansible/intro_adhoc.html">Giới thiệu
@@ -194,11 +194,11 @@ cron hoặc at.</p>
 
 <p>Nếu bạn đã biết và muốn bỏ qua hành vi này, bạn có thể làm bằng cách
 chỉnh sửa trong <code>/etc/ansible/ansible.cfg</code> hoặc <code>~/.ansible.cfg</code>:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">[defauts]
+<div class="highlight"><pre><code class="language-text" data-lang="text">[defauts]
 host_key_checking = False
 </code></pre></div>
 <p>Hoặc có thể điều chỉnh qua biến môi trường:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">export </span><span class="nv">ANSIBLE_HOST_KEY_CHECKING</span><span class="o">=</span>False
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">export </span><span class="nv">ANSIBLE_HOST_KEY_CHECKING</span><span class="o">=</span>False
 </code></pre></div>
 <p>Lưu ý rằng kiểm tra host key ở chế độ paramiko khá chậm, vị vậy nếu sử
 dụng tính năng này, nên chuyển sang dùng ssh.</p>
