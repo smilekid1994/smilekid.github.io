@@ -17,7 +17,7 @@ lấy của nó luôn thì sẽ tiện và dễ hơn).
 
 Trên xonefm thì mấy thông tin này hiển thị khá rõ ràng ở mã HTML (các
 trang khác thì có thể khó hơn nhưng nói chung là đều có thể lấy được)
-![xonfm_player_info](https://cdn.rawgit.com/smilekid1994/smilekid1994.github.io/images/xonefm_player_info.png "XoneFM player infomation")
+![xonfm_player_info](https://cdn.rawgit.com/smilekid1994/smilekid1994.github.io/source/images/xonefm_player_info.png "XoneFM player infomation")
 
 Giả sử mình lấy được các thông tin sau:
 
