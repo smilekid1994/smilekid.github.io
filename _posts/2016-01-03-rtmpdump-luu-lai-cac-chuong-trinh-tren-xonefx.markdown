@@ -61,6 +61,7 @@ OK upload lên Facebook.
 ffmpeg -i ~/Downloads/bfxone.flv \
 -acodec libmp3lame -ac 2 -ab 128k -vn -y bfxone.mp3
 ```
+
 Ok upload lên Soundcloud :D
 
 ## Tham khảo
