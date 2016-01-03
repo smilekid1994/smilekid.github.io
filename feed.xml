@@ -6,8 +6,8 @@
 </description>
     <link>https://smilekid1994.github.io/</link>
     <atom:link href="https://smilekid1994.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 03 Jan 2016 17:41:35 +0700</pubDate>
-    <lastBuildDate>Sun, 03 Jan 2016 17:41:35 +0700</lastBuildDate>
+    <pubDate>Sun, 03 Jan 2016 17:44:37 +0700</pubDate>
+    <lastBuildDate>Sun, 03 Jan 2016 17:44:37 +0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -67,9 +67,10 @@ ffmpeg -i ~/Downloads/bfxone.flv -c copy -copyts bfxone.mp4
 &lt;code&gt;bash
 ffmpeg -i ~/Downloads/bfxone.flv \
 -acodec libmp3lame -ac 2 -ab 128k -vn -y bfxone.mp3
-&lt;/code&gt;
-Ok upload lên Soundcloud :D&lt;/li&gt;
+&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;Ok upload lên Soundcloud :D&lt;/p&gt;
 
 &lt;h2&gt;Tham khảo&lt;/h2&gt;
 
